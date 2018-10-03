@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
       email: new FormControl(this.email, [Validators.required,
       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')]),
       passwordGroup: new FormGroup({
-        password: new FormControl('', [Validators.required,
+        password: new FormControl(this.password, [Validators.required,
         Validators.minLength(8), Validators.maxLength(15)]),
         confirmPassword: new FormControl('', [Validators.required, ConfirmPasswordValidator])
 
