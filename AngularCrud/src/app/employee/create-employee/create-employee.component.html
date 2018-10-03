@@ -1,0 +1,167 @@
+
+<form #employeeForm="ngForm" ngNativeValidate (ngSubmit)="saveEmployeeConfirmation()">
+  <div class="panel panel-primary" *ngIf="employee">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        {{panelTitle}}  Employee
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group" [class.has-error]="fullName.invalid && fullName.touched" [class.has-success]="fullName.valid">
+        <!-- for is for focusing on the field to which it is bind or specified so that when clicking on the label it focuses on the field which it is related -->
+        <label for="fullName" class="control-label">Full Name</label>
+        <input class="form-control" type="text" id="fullName" required pattern="[a-zA-Z\s]+$" name="fullName" [(ngModel)]="employee.name"
+          #fullName="ngModel">
+        <small class="help-block" *ngIf="fullName.errors?.required && fullName.touched">
+          Name is required
+        </small>
+        <span class="help-block" *ngIf="fullName.errors?.pattern && fullName.touched">
+            FullName is invalid
+          </span>
+      </div>
+      <!-- for contact preferences -->
+      <div class="form-goup" [class.has-error]="contactPref.invalid && contactPref.touched" [class.has-success]="contactPref.valid">
+        <label class="control-label">Contact Preference </label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input type="radio" value="Phone" name="contactPreference" [(ngModel)]="employee.contactPreference"
+              required #contactPref="ngModel" />
+            Mobile no
+          </label>
+          <label class="radio-inline">
+            <input type="radio" value="Email" name="contactPreference" [(ngModel)]="employee.contactPreference"
+              required #contactPref="ngModel" />
+            Email
+          </label>
+        </div>
+        <small class="help-block" *ngIf="contactPref.invalid && contactPref.touched">
+          Contact Preference is required
+        </small>
+      </div>
+      <!-- for email -->
+      <div class="form-group" [class.has-error]="email.invalid && email.touched" [class.has-success]="contactPref.value=='email'? email.valid: ''">
+        <label for="email" class="control-label">Email</label>
+        <input class="form-control" type="text" id="email" name="email" [(ngModel)]="employee.email" #email="ngModel"
+          [required]="contactPref.value=='Email'" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+        <span class="help-block" *ngIf="email.errors?.required && email.touched">
+          Email is required
+        </span>
+        <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+          Email is invalid
+        </span>
+      </div>
+      <!-- for mobile no -->
+      <div class="form-group" [class.has-error]="mobileNo.invalid && mobileNo.touched" [class.has-success]="contactPref.value=='mobileNo'? mobileNo.valid: ''">
+        <label for="mobileNo" class="control-label">Mobile No.</label>
+        <input class="form-control" type="text" id="mobileNo" name="mobileNo" [(ngModel)]="employee.phoneNumber"
+          [required]="contactPref.value=='Phone'" pattern="[6-9]{1}[0-9]{9}" #mobileNo="ngModel">
+        <span class="help-block" *ngIf="mobileNo.errors?.required && mobileNo.touched">
+          Mobile No is required
+        </span>
+        <span class="help-block" *ngIf="mobileNo.errors?.pattern && mobileNo.touched">
+            Mobile No is Invalid!!! <br/>Must start with 6 or 7 or 8 or 9 and be of 10 digit
+          </span>
+      </div>
+      <!-- for gender radio -->
+      <div class="form-goup" [class.has-error]="gender.invalid && gender.touched" [class.has-success]="gender.valid">
+        <label class="control-label">Gender </label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input type="radio" value="Male" name="gender" [(ngModel)]="employee.gender" required #gender="ngModel" />
+            Male
+          </label>
+          <label class="radio-inline">
+            <input type="radio" value="Female" name="gender" [(ngModel)]="employee.gender" required #gender="ngModel" />
+            Female
+          </label>
+        </div>
+        <small class="help-block" *ngIf="gender.invalid && gender.touched">
+          Gender is required
+        </small>
+      </div>
+      <br>
+      <!-- for IsActive member checkbox -->
+
+      <div class="form-goup">
+        <div class="form-control">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="isActive" [(ngModel)]="employee.isActive" />
+            Is Active
+          </label>
+        </div>
+      </div>
+      <br />
+      <!-- for department drop down list -->
+      <div class="form-group" [class.has-error]="department.invalid && department.touched" [class.has-success]="department.valid">
+        <label for="department" class="control-label">
+          Department
+        </label>
+        <select class="form-control" id="department" name="department" [(ngModel)]="employee.department"
+          appSelectRequiredValidator="-1" #department="ngModel">
+          <option value="-1"> Select Department</option>
+          <option *ngFor="let department of departments" [value]="department.id">{{department.name}}</option>
+        </select>
+        <span class="help-block" *ngIf="department.errors?.deafultSelected && department.touched">
+          Department is required
+        </span>
+      </div>
+      <!-- for Date of Birth using ngx-bootstrap date picker -->
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label for="dateOfBirth">Date Of Birth</label>
+          <input class="form-control" type="test" bsDatepicker [bsConfig]="datePickerConfig" id="dateOfBirth" name="dateOfBirth"
+            placement="right" [(ngModel)]="employee.dateOfBirth">
+        </div>
+      </div>
+      <!-- for photopath -->
+      <div class="form-group">
+        <label for="photoPath">Photo Path</label>
+        <input id="photoPath" type="text" class="form-control" name="photoPath" [(ngModel)]="employee.photoPath">
+      </div>
+      <!-- button to show preview -->
+      <div class="form-group" *ngIf="employee.photoPath !='' && employee.photoPath != null">
+        <button type="button" (click)="toggleShowPreview()" class="btn btn-primary">{{showPreview ? "Hide" : "Show"}}
+          Preview</button>
+      </div>
+      <!-- photo src to display image -->
+      <div class="form-group" *ngIf="employee.photoPath !='' && employee.photoPath != null">
+        <img [src]="employee.photoPath" height="200" width="200" *ngIf="showPreview" />
+      </div>
+
+      
+      
+
+    </div>
+    <!-- for submit button -->
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
+    </div>
+  </div>
+</form>
+<!-- Angular Generated Form model : {{employeeForm.value | json}}
+<br>
+Angular generated propertValidation name valid: {{email.valid| json}}
+<br>
+Angular generated propertValidation name invalid: {{email.invalid| json}}
+<br />
+Our own generated model : {{employee | json}} -->
+
+
+<!-- disabled is a attribute to disable the radio button, drop down select , checkbox one thing to keep in mind that property wouldnot be captured in the ngModule -->
+<!-- disabled property is not included in the auto included in the autogenerated ngForm model -->
+<!-- for default value for the radio button, checkbox , drop down select just initialize the property value in the component class -->
+<!-- by default from angular 4 browser validation is disabled by explicitly adding novalidate directive by angular 
+so if want to validate the form use ngNativeValidate in the form template  for browser validation but it is not recomended to use browser validation as this may vary from browser to browser
+which may result in different user experience-->
+
+<!-- bootstrap classes for styling error messages 
+1. has-error
+2. control-label 
+3. help-block -->
+
+<!-- if want to have proper validator to work for the first selction option 
+1. either set that <option disabled [ngValue]="null">first by default value to be selected </option>
+2. or use custom validator -->
+
+<!-- for manual validation (change)="confirmPassword.control.updateValueAndValidity()" this will work when its looses focus to work while typing use input instead of chabge -->
+

@@ -1,0 +1,195 @@
+<div class="container-fluid">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister(registerForm.value)">
+    <mat-card>
+      <mat-card-header [style.backgroundColor]="'lightblue'">
+        <mat-card-title>
+          <h3>SignUp</h3>
+        </mat-card-title>
+
+      </mat-card-header>
+      <mat-card-content>
+
+        <table>
+          <tr>
+            <div>
+              <td>
+                <!-- <div class="form-group" [class.has-error]="registerForm.get('firstName').valid && registerForm.get('firstName').touched" [class.has-success]="registerForm.get('firstName').valid"> -->
+                <mat-form-field>
+                  <input matInput matTooltip="Enter First Name" placeholder="First-Name" formControlName="firstName" [(ngModel)]="firstName" type="text" required name="firstName"
+                    id="firstName">
+                  <mat-hint>use like : Aman , Upendra</mat-hint>
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="registerForm.get('firstName').errors?.required && registerForm.get('firstName').touched">
+                    Please enter First Name !!!
+                  </span>
+
+                  <span *ngIf="registerForm.get('firstName').errors?.pattern && registerForm.get('firstName').touched">
+                    Not a valid First Name !!!
+                  </span>
+                </mat-error>
+                <!-- </div> -->
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Middle-Name" matTooltip="Enter Middle Name" type="text" formControlName="middleName" [(ngModel)]="middleName">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="registerForm.get('middleName').errors?.pattern && registerForm.get('middleName').touched">
+                    Not a valid Middle Name !!!
+                  </span>
+                </mat-error>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Last-Name" matTooltip="Enter Last Name" type="text" formControlName="lastName" required [(ngModel)]="lastname">
+                </mat-form-field>
+                <mat-error>
+                  <small *ngIf="registerForm.get('lastName').errors?.required && registerForm.get('lastName').touched">
+                    Please enter Last Name !!!
+                  </small>
+                  <span *ngIf="registerForm.get('lastName').errors?.pattern && registerForm.get('lastName').touched">
+                    Not a valid Last Name !!!
+                  </span>
+                </mat-error>
+              </td>
+            </div>
+          </tr>
+          <div formGroupName="address">
+            <tr>
+              <td>
+                <h4>Address</h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="street" formControlName="street" matTooltip="Enter street of your address" type="text" [(ngModel)]="street">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="city" matTooltip="Enter City" formControlName="city" type="text" required [(ngModel)]="city">
+                </mat-form-field>
+                <mat-error>
+                  <small *ngIf="registerForm.controls['address'].controls['city'].errors?.required && registerForm.controls['address'].controls['city'].touched">
+                    Please enter city !!!
+                  </small>
+                  <span *ngIf="registerForm.controls['address'].controls['city'].errors?.pattern && registerForm.controls['address'].controls['city'].touched">
+                    Not a valid city !!!
+                  </span>
+                </mat-error>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="state" matTooltip="Enter State" formControlName="state" type="text" required [(ngModel)]="state">
+                </mat-form-field>
+                <mat-error>
+                  <small *ngIf="registerForm.controls['address'].controls['state'].errors?.required && registerForm.controls['address'].controls['state'].touched">
+                    Please enter state !!!
+                  </small>
+                  <span *ngIf="registerForm.controls['address'].controls['state'].errors?.pattern && registerForm.controls['address'].controls['state'].touched">
+                    Not a valid state !!!
+                  </span>
+                </mat-error>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="zipcode" matTooltip="Enter Zipcode/PinCode" formControlName="zipcode" required [(ngModel)]="zipcode">
+                  <mat-hint>use like : 111001, 444001</mat-hint>
+                </mat-form-field>
+                <mat-error>
+                  <small *ngIf="registerForm.controls['address'].controls['zipcode'].errors?.required && registerForm.controls['address'].controls['zipcode'].touched">
+                    Please enter ZipCode !!!
+                  </small>
+                  <span *ngIf="registerForm.controls['address'].controls['zipcode'].errors?.pattern && registerForm.controls['address'].controls['zipcode'].touched">
+                    Not a valid zipcode !!!
+                  </span>
+                </mat-error>
+              </td>
+            </tr>
+          </div>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="userName" matTooltip="Enter unique UserName" formControlName="userName" type="text" required [(ngModel)]="userName">
+                <mat-hint>special char not allowed(#$..)</mat-hint>
+              </mat-form-field>
+              <mat-error>
+                <small *ngIf="registerForm.get('userName').errors?.required && registerForm.get('userName').touched">
+                  Please enter UserName !!!
+                </small>
+                <span *ngIf="registerForm.get('userName').errors?.pattern && registerForm.get('userName').touched">
+                  Not a valid userName !!!
+                </span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" matTooltip="Enter email id" type="text" required [(ngModel)]="email">
+                <mat-hint>abc@domain.com</mat-hint>
+              </mat-form-field>
+              <mat-error>
+                <small *ngIf="registerForm.get('email').errors?.required && registerForm.get('email').touched">
+                  Please enter email !!!
+                </small>
+                <span *ngIf="registerForm.get('email').errors?.pattern && registerForm.get('email').touched">
+                  Not a valid email !!!
+                </span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <div formGroupName="passwordGroup"> 
+
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="password" matTooltip="Enter password" formControlName="password" type="password" required [(ngModel)]="password">
+                </mat-form-field>
+                <mat-error>
+                  <small *ngIf="registerForm.controls['passwordGroup'].controls['password'].errors?.required && registerForm.controls['passwordGroup'].controls['password'].touched">
+                    Please enter password !!!
+                  </small>
+                </mat-error>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Re-enter Password" matTooltip="Enter confirm password" formControlName="confirmPassword" type="password"
+                    appConfirmEqualValidator="password" required>
+                </mat-form-field>
+                <mat-error>
+                  <small *ngIf="registerForm.controls['passwordGroup'].controls['confirmPassword'].errors?.required && registerForm.controls['passwordGroup'].controls['confirmPassword'].touched">
+                    Please enter confirm Password !!!
+                  </small>
+                  <small *ngIf="registerForm.controls['passwordGroup'].controls['confirmPassword'].errors?.notEqual 
+                  && registerForm.controls['passwordGroup'].controls['confirmPassword'].touched 
+                  && !registerForm.controls['passwordGroup'].controls['confirmPassword'].errors?.required">
+                    Password and Confirm password do not match
+                  </small>
+                </mat-error>
+              </td>
+
+            </div>
+          </tr>
+          <tr>
+            <td>
+              <mat-slide-toggle color="primary" formControlName="IsAccepted" (change)="onChange($event)">Accept Terms & Conditions</mat-slide-toggle>
+            </td>
+          </tr>
+        </table>
+
+
+
+        <!-- <mat-spinner ></mat-spinner> -->
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" matTooltip="Click To Register" [disabled]="!registerForm.valid || IsAccepted==0">SignUp</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  {{registerForm.value | json}} <br />
+  Register Form Status: {{registerForm.status }} <br />
+  firstname: {{firstName}}
+</div>

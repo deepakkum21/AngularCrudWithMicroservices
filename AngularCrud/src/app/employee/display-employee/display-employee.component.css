@@ -1,0 +1,18 @@
+imageClass{
+    width:150px;
+    height:150px;
+}
+.vertical-align{
+    display: flex;
+    align-items: center;
+}
+button.btn{
+    width:70px;
+    border-spacing: 5px;
+}
+.pointerCursor {
+    cursor: pointer;
+}
+.btn-space {
+    margin-right: 5px;
+}
