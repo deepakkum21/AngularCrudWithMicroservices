@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EmployeeDeleteDbServiceApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.stpl.deepak.employee.EmployeeDeleteDbServiceApplication",
+            "args": "",
+            "projectName": "EmployeeDeleteDbService"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EmployeeAddDbServiceApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.stpl.deepak.employee.EmployeeAddDbServiceApplication",
+            "args": "",
+            "projectName": "EmployeeAddDbService"
+        }
+    ]
+}

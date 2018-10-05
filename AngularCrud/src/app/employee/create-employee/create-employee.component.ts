@@ -23,7 +23,7 @@ export class CreateEmployeeComponent implements OnInit {
     { id: 5, name: 'Admin' }
   ];
 
-  private panelTitle: string;
+  panelTitle: string;
 
   @ViewChild('employeeForm')
   public createEmployeeForm: NgModel;

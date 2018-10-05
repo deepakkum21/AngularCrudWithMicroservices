@@ -26,7 +26,7 @@ import { LoginComponent } from './employee/component/login/login.component';
 import { MyRegisterDialogComponent } from './employee/dialog/my-register-dialog/my-register-dialog.component';
 import { DeleteDialogComponent } from './employee/dialog/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './employee/dialog/edit-dialog/edit-dialog.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { RegisteruseCanDeactivateService } from './employee/service/registeruse-can-deactivate.service';
 
 const appRoutes: Routes = [
   {
@@ -45,7 +45,11 @@ const appRoutes: Routes = [
     canActivate: [EmployeeDetailsGuardService]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canDeactivate: [RegisteruseCanDeactivateService]
+  },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'notfound', component: EmployeeNotFoundComponent }
 ];
@@ -70,7 +74,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     BsDatepickerModule.forRoot(),
     // setting enableTracing  True logs all the events that take place when routing take place
     // like NavigationStart, NavigationEnd, RoutesRecognized, GuardsCheckStart, GuardsCheckEnd, NavigationCancel, NavigationError,
@@ -79,8 +83,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule
+    MaterialModule
   ],
   exports: [MaterialModule],
   providers: [],

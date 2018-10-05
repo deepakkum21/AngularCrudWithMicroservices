@@ -15,8 +15,8 @@
               <td>
                 <!-- <div class="form-group" [class.has-error]="registerForm.get('firstName').valid && registerForm.get('firstName').touched" [class.has-success]="registerForm.get('firstName').valid"> -->
                 <mat-form-field>
-                  <input matInput matTooltip="Enter First Name" placeholder="First-Name" formControlName="firstName" [(ngModel)]="firstName" type="text" required name="firstName"
-                    id="firstName">
+                  <input matInput matTooltip="Enter First Name" placeholder="First-Name" formControlName="firstName"  type="text" required name="firstName"
+                   [(ngModel)]="userInfo.firstName" id="firstName">
                   <mat-hint>use like : Aman , Upendra</mat-hint>
                 </mat-form-field>
                 <mat-error>
@@ -32,7 +32,7 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="Middle-Name" matTooltip="Enter Middle Name" type="text" formControlName="middleName" [(ngModel)]="middleName">
+                  <input matInput placeholder="Middle-Name" matTooltip="Enter Middle Name" type="text" formControlName="middleName" [(ngModel)]="userInfo.middleName">
                 </mat-form-field>
                 <mat-error>
                   <span *ngIf="registerForm.get('middleName').errors?.pattern && registerForm.get('middleName').touched">
@@ -42,7 +42,7 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="Last-Name" matTooltip="Enter Last Name" type="text" formControlName="lastName" required [(ngModel)]="lastname">
+                  <input matInput placeholder="Last-Name" matTooltip="Enter Last Name" type="text" formControlName="lastName" required [(ngModel)]="userInfo.lastName">
                 </mat-form-field>
                 <mat-error>
                   <small *ngIf="registerForm.get('lastName').errors?.required && registerForm.get('lastName').touched">
@@ -64,12 +64,12 @@
             <tr>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="street" formControlName="street" matTooltip="Enter street of your address" type="text" [(ngModel)]="street">
+                  <input matInput placeholder="street" formControlName="street" matTooltip="Enter street of your address" type="text" [(ngModel)]="userInfo.street">
                 </mat-form-field>
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="city" matTooltip="Enter City" formControlName="city" type="text" required [(ngModel)]="city">
+                  <input matInput placeholder="city" matTooltip="Enter City" formControlName="city" type="text" required [(ngModel)]="userInfo.city">
                 </mat-form-field>
                 <mat-error>
                   <small *ngIf="registerForm.controls['address'].controls['city'].errors?.required && registerForm.controls['address'].controls['city'].touched">
@@ -82,7 +82,7 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="state" matTooltip="Enter State" formControlName="state" type="text" required [(ngModel)]="state">
+                  <input matInput placeholder="state" matTooltip="Enter State" formControlName="state" type="text" required [(ngModel)]="userInfo.state">
                 </mat-form-field>
                 <mat-error>
                   <small *ngIf="registerForm.controls['address'].controls['state'].errors?.required && registerForm.controls['address'].controls['state'].touched">
@@ -95,7 +95,7 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="zipcode" matTooltip="Enter Zipcode/PinCode" formControlName="zipcode" required [(ngModel)]="zipcode">
+                  <input matInput placeholder="zipcode" matTooltip="Enter Zipcode/PinCode" formControlName="zipcode" required [(ngModel)]="userInfo.zipCode">
                   <mat-hint>use like : 111001, 444001</mat-hint>
                 </mat-form-field>
                 <mat-error>
@@ -112,7 +112,7 @@
           <tr>
             <td>
               <mat-form-field>
-                <input matInput placeholder="userName" matTooltip="Enter unique UserName" formControlName="userName" type="text" required [(ngModel)]="userName">
+                <input matInput placeholder="userName" matTooltip="Enter unique UserName" formControlName="userName" type="text" required [(ngModel)]="userInfo.userName">
                 <mat-hint>special char not allowed(#$..)</mat-hint>
               </mat-form-field>
               <mat-error>
@@ -128,7 +128,7 @@
           <tr>
             <td>
               <mat-form-field>
-                <input matInput placeholder="Email" formControlName="email" matTooltip="Enter email id" type="text" required [(ngModel)]="email">
+                <input matInput placeholder="Email" formControlName="email" matTooltip="Enter email id" type="text" required [(ngModel)]="userInfo.email">
                 <mat-hint>abc@domain.com</mat-hint>
               </mat-form-field>
               <mat-error>
@@ -146,7 +146,7 @@
 
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="password" matTooltip="Enter password" formControlName="password" type="password" required [(ngModel)]="password">
+                  <input matInput placeholder="password" matTooltip="Enter password" formControlName="password" type="password" required [(ngModel)]="userInfo.password">
                 </mat-form-field>
                 <mat-error>
                   <small *ngIf="registerForm.controls['passwordGroup'].controls['password'].errors?.required && registerForm.controls['passwordGroup'].controls['password'].touched">
@@ -157,15 +157,15 @@
               <td>
                 <mat-form-field>
                   <input matInput placeholder="Re-enter Password" matTooltip="Enter confirm password" formControlName="confirmPassword" type="password"
-                    appConfirmEqualValidator="password" required>
+                    required>
                 </mat-form-field>
                 <mat-error>
                   <small *ngIf="registerForm.controls['passwordGroup'].controls['confirmPassword'].errors?.required && registerForm.controls['passwordGroup'].controls['confirmPassword'].touched">
                     Please enter confirm Password !!!
                   </small>
-                  <small *ngIf="registerForm.controls['passwordGroup'].controls['confirmPassword'].errors?.notEqual 
+                  <small *ngIf="registerForm.controls['passwordGroup'].errors?.isError 
                   && registerForm.controls['passwordGroup'].controls['confirmPassword'].touched 
-                  && !registerForm.controls['passwordGroup'].controls['confirmPassword'].errors?.required">
+                  && !registerForm.controls['passwordGroup'].controls['confirmPassword'].errors?.required"> 
                     Password and Confirm password do not match
                   </small>
                 </mat-error>
@@ -191,5 +191,4 @@
   </form>
   {{registerForm.value | json}} <br />
   Register Form Status: {{registerForm.status }} <br />
-  firstname: {{firstName}}
 </div>
