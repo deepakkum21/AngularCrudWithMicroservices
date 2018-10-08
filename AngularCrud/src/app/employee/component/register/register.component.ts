@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, NgForm, NgModel } from '@angular/forms';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { MyRegisterDialogComponent } from '../../dialog/my-register-dialog/my-register-dialog.component';
 import { ConfirmPasswordValidator } from '../../validator/confirm-password-validator';
@@ -29,8 +29,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   };
 
   // using FormGroup and FormControl
-  @ViewChild('registerForm')
-  newRegisterForm: FormGroup;
+  @ViewChild('userRegisterForm')
+  newRegisterForm: NgModel;
 
   registerForm: FormGroup;
 

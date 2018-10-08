@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister(registerForm.value)">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister(registerForm.value)" #userRegisterForm="ngForm">
     <mat-card>
       <mat-card-header [style.backgroundColor]="'lightblue'">
         <mat-card-title>

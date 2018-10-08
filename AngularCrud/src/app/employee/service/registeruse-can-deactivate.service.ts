@@ -10,7 +10,9 @@ export class RegisteruseCanDeactivateService implements CanDeactivate<RegisterCo
   constructor() { }
 
   canDeactivate(component: RegisterComponent): boolean {
-    if (component.newRegisterForm.dirty) {
+    console.log('enetered in the can deactivate vroute' + component.newRegisterForm);
+    if ( component.newRegisterForm.dirty) {
+      console.log('if condition');
       return confirm('Are you sure you want to discard your changes?');
     }
     return true;
