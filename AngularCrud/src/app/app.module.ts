@@ -27,6 +27,9 @@ import { MyRegisterDialogComponent } from './employee/dialog/my-register-dialog/
 import { DeleteDialogComponent } from './employee/dialog/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './employee/dialog/edit-dialog/edit-dialog.component';
 import { RegisteruseCanDeactivateService } from './employee/service/registeruse-can-deactivate.service';
+import { RegisteredUserListComponent } from './employee/component/registered-user-list-mat-table/registered-user-list.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { RegisterUserListAgGridComponent } from './employee/component/register-user-list-ag-grid/register-user-list-ag-grid.component';
 
 const appRoutes: Routes = [
   {
@@ -50,6 +53,14 @@ const appRoutes: Routes = [
     component: RegisterComponent,
     canDeactivate: [RegisteruseCanDeactivateService]
   },
+  {
+    path: 'registeredUserListMatTable',
+    component: RegisteredUserListComponent
+  },
+  {
+    path: 'registeredUserListAgGridTable',
+    component: RegisterUserListAgGridComponent
+  },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'notfound', component: EmployeeNotFoundComponent }
 ];
@@ -70,7 +81,9 @@ const appRoutes: Routes = [
     LoginComponent,
     MyRegisterDialogComponent,
     DeleteDialogComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    RegisteredUserListComponent,
+    RegisterUserListAgGridComponent
   ],
   imports: [
     FormsModule,
@@ -83,7 +96,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    AgGridModule.withComponents([RegisterUserListAgGridComponent])
   ],
   exports: [MaterialModule],
   providers: [],

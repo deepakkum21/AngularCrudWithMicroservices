@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserinfoService {
-  userInfoURL: 'http://localhost:8005/userInfo';
+  userInfoURL = 'http://localhost:8005/userInfo';
   constructor(private _httpClient: HttpClient) { }
 
   public addUserInfo(newUserInfo: UserInfoModel): Observable<UserInfoModel> {
@@ -17,8 +17,23 @@ export class UserinfoService {
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
-      })
-    }).pipe(catchError(this.handleError));
+        })
+      }).pipe(catchError(this.handleError));
+  }
+
+  public getRegisteredUserList() {
+    return new Promise((resolve) => {
+      this._httpClient.get<UserInfoModel[]>(this.userInfoURL).subscribe((data) => {
+        // SHOW A MESSAGE RECEIVED FROM THE WEB API
+        resolve(data);
+        return data;
+      });
+    });
+    // return this._httpClient.get<UserInfoModel[]>(this.userInfoURL).pipe(catchError(this.handleError));
+  }
+
+  public getAgGridRegisteredUserList() {
+    return this._httpClient.get<UserInfoModel[]>(this.userInfoURL).pipe(catchError(this.handleError));
   }
 
   private handleError(errorResponse: HttpErrorResponse) {
