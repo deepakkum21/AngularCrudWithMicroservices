@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserinfoService {
+
   userInfoURL = 'http://localhost:8005/userInfo';
   constructor(private _httpClient: HttpClient) { }
 
@@ -34,6 +35,11 @@ export class UserinfoService {
 
   public getAgGridRegisteredUserList() {
     return this._httpClient.get<UserInfoModel[]>(this.userInfoURL).pipe(catchError(this.handleError));
+  }
+
+  public deleteOneUserInfo(userName: string): Observable<void> {
+    console.log(this.userInfoURL + '/' + userName);
+    return this._httpClient.delete<void>(this.userInfoURL + '/' + userName).pipe(catchError(this.handleError));
   }
 
   private handleError(errorResponse: HttpErrorResponse) {

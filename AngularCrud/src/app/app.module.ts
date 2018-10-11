@@ -30,6 +30,7 @@ import { RegisteruseCanDeactivateService } from './employee/service/registeruse-
 import { RegisteredUserListComponent } from './employee/component/registered-user-list-mat-table/registered-user-list.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { RegisterUserListAgGridComponent } from './employee/component/register-user-list-ag-grid/register-user-list-ag-grid.component';
+import { RegisterUserDialogComponent } from './employee/dialog/register-user-dialog/register-user-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     DeleteDialogComponent,
     EditDialogComponent,
     RegisteredUserListComponent,
-    RegisterUserListAgGridComponent
+    RegisterUserListAgGridComponent,
+    RegisterUserDialogComponent
   ],
   imports: [
     FormsModule,
@@ -99,12 +101,12 @@ const appRoutes: Routes = [
     MaterialModule,
     AgGridModule.withComponents([RegisterUserListAgGridComponent])
   ],
-  exports: [MaterialModule],
   providers: [],
   entryComponents: [
     MyRegisterDialogComponent,
     DeleteDialogComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    RegisterUserDialogComponent
   ],
   bootstrap: [AppComponent]
 })

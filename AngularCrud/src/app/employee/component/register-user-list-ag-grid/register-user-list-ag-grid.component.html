@@ -2,11 +2,13 @@
   <div class="ag-theme-material">
   <ag-grid-angular #agGrid
                    style="width: 1140px; height: 600px;" 
-                 
+                   (gridReady)="onGridReady($event)"
                    [enableSorting]="true"
                    [enableFilter]="true"
+                   [overlayLoadingTemplate]="overlayLoadingTemplate"
                    [rowData]="myRegisteredUerRowData"
                    [columnDefs]="myColumnDefs"
+                   [statusBar]="myStatusBar"
                    rowSelection="multiple"
                    >
   </ag-grid-angular>
@@ -18,4 +20,5 @@
     <button mat-stroked-button color="warn">Warn</button>
     <button mat-stroked-button disabled>Disabled</button>
     <a mat-stroked-button routerLink=".">Link</a> -->
+    <button mat-stroked-button color="secondary" (click)="loadData()">Load Data</button>
   </div>
