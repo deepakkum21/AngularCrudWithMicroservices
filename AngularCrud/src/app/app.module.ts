@@ -31,6 +31,9 @@ import { RegisteredUserListComponent } from './employee/component/registered-use
 import { AgGridModule } from 'ag-grid-angular';
 import { RegisterUserListAgGridComponent } from './employee/component/register-user-list-ag-grid/register-user-list-ag-grid.component';
 import { RegisterUserDialogComponent } from './employee/dialog/register-user-dialog/register-user-dialog.component';
+import { CrudMainNavComponent } from './crud-main-nav/crud-main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {
@@ -85,7 +88,8 @@ const appRoutes: Routes = [
     EditDialogComponent,
     RegisteredUserListComponent,
     RegisterUserListAgGridComponent,
-    RegisterUserDialogComponent
+    RegisterUserDialogComponent,
+    CrudMainNavComponent
   ],
   imports: [
     FormsModule,
@@ -99,7 +103,13 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AgGridModule.withComponents([RegisterUserListAgGridComponent])
+    AgGridModule.withComponents([RegisterUserListAgGridComponent]),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   entryComponents: [

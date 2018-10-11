@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="list">List</a>
+      <a mat-list-item routerLink="edit/0">Create</a>
+      <a mat-list-item routerLink="login">Login</a>
+      <a mat-list-item routerLink="register">Register</a>
+      <a mat-list-item routerLink="registeredUserListMatTable">User List(Mat)</a>
+      <a mat-list-item routerLink="registeredUserListAgGridTable">User List(Ag)</a>      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><h1>AngularCrud Demo</h1></span>
+
+      <span class="spacer"> </span>
+      <!-- links for the right side in the side nav content -->
+      <a routerLink="list">List</a>
+      <a routerLink="edit/0">Create</a>
+      <a routerLink="login">Login</a>
+      <a routerLink="register">Register</a>
+      <a routerLink="registeredUserListMatTable">User List(Mat)</a>
+      <a routerLink="registeredUserListAgGridTable">User List(Ag)</a>    
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -4,7 +4,7 @@
 <div class="spinner-container" *ngIf="!dataSource">
   <mat-spinner></mat-spinner>
 </div>
-<div  class="mat-elevation-z8" >
+<div class="mat-elevation-z8">
   <mat-table [dataSource]="dataSource" matSort>
 
     <!-- Checkbox Column -->
@@ -22,12 +22,12 @@
 
     <!-- Index Column -->
     <ng-container matColumnDef="index">
-      <mat-header-cell *matHeaderCellDef > S.No. </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> S.No. </mat-header-cell>
       <mat-cell *matCellDef="let index = index"> {{index+1}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="fullName">
-      <mat-header-cell *matHeaderCellDef >Full Name</mat-header-cell>
-      <mat-cell *matCellDef="let userInfo">{{userInfo.firstName +' ' + userInfo.middleName +' '+ userInfo.lastName}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.firstName +' ' + userInfo.middleName +' '+ userInfo.lastName  | uppercase}}</mat-cell>
     </ng-container>
     <!-- <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
@@ -53,19 +53,23 @@
       <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
       <mat-cell *matCellDef="let userInfo">{{userInfo.state}}</mat-cell>
     </ng-container> -->
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: rgb(255, 182, 193);"></mat-header-row>
     <mat-row *matRowDef="let rowData; columns: displayedColumns;" (click)="onRowClicked(rowData)" class="pointerCursor"></mat-row>
   </mat-table>
   <div>
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
 <div class="button-row">
-    <!-- <button mat-stroked-button>Basic</button> -->
-    <button mat-stroked-button color="primary" (click)="editData()">Edit</button>
-    <!-- <button mat-stroked-button color="accent">Accent</button>
+  <!-- <button mat-stroked-button>Basic</button> -->
+  <button mat-fab color="accent" (click)="editData()">
+    <mat-icon>mode_edit</mat-icon>
+  </button>
+  <!-- <button mat-stroked-button color="accent">Accent</button>
     <button mat-stroked-button color="warn">Warn</button>
     <button mat-stroked-button disabled>Disabled</button>
     <a mat-stroked-button routerLink=".">Link</a> -->
-    <button mat-stroked-button color="warn" (click)="onDelete()">Delete</button> 
-  </div>
+  <button mat-fab color="warn" (click)="onDelete()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

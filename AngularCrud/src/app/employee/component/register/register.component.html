@@ -18,6 +18,7 @@
                   <input matInput matTooltip="Enter First Name" placeholder="First-Name" formControlName="firstName"  type="text" required name="firstName"
                    [(ngModel)]="userInfo.firstName" id="firstName">
                   <mat-hint>use like : Aman , Upendra</mat-hint>
+                  <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
                 <mat-error>
                   <span *ngIf="registerForm.get('firstName').errors?.required && registerForm.get('firstName').touched">
@@ -95,8 +96,9 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="zipcode" matTooltip="Enter Zipcode/PinCode" formControlName="zipcode" required [(ngModel)]="userInfo.zipCode">
-                  <mat-hint>use like : 111001, 444001</mat-hint>
+                  <input matInput placeholder="zipcode" matTooltip="Enter Zipcode/PinCode" formControlName="zipcode" required [(ngModel)]="userInfo.zipCode" maxlength="6">
+                  <mat-hint allign="end">{{userInfo.zipCode.length}} / 6</mat-hint>
+                  <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
                 <mat-error>
                   <small *ngIf="registerForm.controls['address'].controls['zipcode'].errors?.required && registerForm.controls['address'].controls['zipcode'].touched">
@@ -147,6 +149,7 @@
               <td>
                 <mat-form-field>
                   <input matInput placeholder="password" matTooltip="Enter password" formControlName="password" type="password" required [(ngModel)]="userInfo.password">
+                  <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
                 </mat-form-field>
                 <mat-error>
                   <small *ngIf="registerForm.controls['passwordGroup'].controls['password'].errors?.required && registerForm.controls['passwordGroup'].controls['password'].touched">

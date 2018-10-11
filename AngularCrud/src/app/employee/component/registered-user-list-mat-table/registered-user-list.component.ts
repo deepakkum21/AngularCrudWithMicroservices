@@ -96,8 +96,10 @@ export class RegisteredUserListComponent implements OnInit, AfterContentChecked 
     console.log(this.selection.selected);
     if (this.selection.selected.length > 1) {
       alert('Please select only one record to edit');
-    } else {
+    } else if (this.selection.selected.length === 1) {
       console.log('you acan edit');
+    } else {
+      alert('Please select records to Edit!!!! \n You haven\'t selected any record');
     }
   }
 
