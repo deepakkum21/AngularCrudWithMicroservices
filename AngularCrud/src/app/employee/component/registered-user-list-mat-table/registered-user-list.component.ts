@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatSort, MatTableDataSource, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
 import { RegisterUserDialogComponent } from '../../dialog/register-user-dialog/register-user-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registered-user-list',
@@ -25,7 +26,8 @@ export class RegisteredUserListComponent implements OnInit, AfterContentChecked 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private _userInfoService: UserinfoService, private _myDialog: MatDialog, private confirmationSnackBar: MatSnackBar) { }
+  constructor(private _userInfoService: UserinfoService, private _myDialog: MatDialog, private confirmationSnackBar: MatSnackBar,
+    private _router: Router) { }
 
   // ngOnInit() {
   //   this._userInfoService.getRegisteredUserList().subscribe((userList) => {
@@ -97,7 +99,8 @@ export class RegisteredUserListComponent implements OnInit, AfterContentChecked 
     if (this.selection.selected.length > 1) {
       alert('Please select only one record to edit');
     } else if (this.selection.selected.length === 1) {
-      console.log('you acan edit');
+      console.log('you acan edit: ' + this.selection.selected[0].userName);
+      this._router.navigate(['/register', this.selection.selected[0].userName]);
     } else {
       alert('Please select records to Edit!!!! \n You haven\'t selected any record');
     }

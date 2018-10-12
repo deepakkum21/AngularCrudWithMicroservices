@@ -42,6 +42,10 @@ export class UserinfoService {
     return this._httpClient.delete<void>(this.userInfoURL + '/' + userName).pipe(catchError(this.handleError));
   }
 
+  getUserInfoByUserName(userName: string): Observable<UserInfoModel> {
+    return this._httpClient.get<UserInfoModel>(this.userInfoURL + '/' + userName).pipe(catchError(this.handleError));
+  }
+
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
       console.error('Client Side Error :', errorResponse.error.message);

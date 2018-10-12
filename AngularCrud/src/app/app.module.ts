@@ -33,7 +33,7 @@ import { RegisterUserListAgGridComponent } from './employee/component/register-u
 import { RegisterUserDialogComponent } from './employee/dialog/register-user-dialog/register-user-dialog.component';
 import { CrudMainNavComponent } from './crud-main-nav/crud-main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { DashboardDemoComponent } from './employee/component/dashboard-demo/dashboard-demo.component';
 
 const appRoutes: Routes = [
   {
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   {
-    path: 'register',
+    path: 'register/:userName',
     component: RegisterComponent,
     canDeactivate: [RegisteruseCanDeactivateService]
   },
@@ -89,7 +89,8 @@ const appRoutes: Routes = [
     RegisteredUserListComponent,
     RegisterUserListAgGridComponent,
     RegisterUserDialogComponent,
-    CrudMainNavComponent
+    CrudMainNavComponent,
+    DashboardDemoComponent
   ],
   imports: [
     FormsModule,
@@ -104,12 +105,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     AgGridModule.withComponents([RegisterUserListAgGridComponent]),
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+    LayoutModule
   ],
   providers: [],
   entryComponents: [

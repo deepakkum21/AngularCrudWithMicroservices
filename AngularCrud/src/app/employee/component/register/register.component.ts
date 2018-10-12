@@ -5,7 +5,7 @@ import { MyRegisterDialogComponent } from '../../dialog/my-register-dialog/my-re
 import { ConfirmPasswordValidator } from '../../validator/confirm-password-validator';
 import { UserInfoModel } from '../../../models/user-info-model';
 import { UserinfoService } from '../../service/userinfo.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   // constructor(private _registerFormBuilder: FormBuilder) { }
 
   constructor(private myDialog: MatDialog, private confirmationSnackBar: MatSnackBar, private userInfoService: UserinfoService,
-    private _route: Router) {
+    private _route: Router, private _activatedRoute: ActivatedRoute) {
     this.registerForm = new FormGroup({
       firstName: new FormControl('', [Validators.required,
       Validators.minLength(4), Validators.maxLength(15), Validators.pattern('[a-zA-Z\s]+$')]),
@@ -62,8 +62,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       Validators.minLength(4), Validators.maxLength(15), Validators.pattern('[a-zA-Z\s]+$')]),
       address: new FormGroup({
         street: new FormControl(this.userInfo.street),
-        city: new FormControl(this.userInfo.city, [Validators.required, Validators.maxLength(15), Validators.pattern('[a-zA-Z\s]+$')]),
-        state: new FormControl(this.userInfo.state, [Validators.required, Validators.maxLength(15), Validators.pattern('[a-zA-Z\s]+$')]),
+        city: new FormControl(this.userInfo.city, [Validators.required, Validators.maxLength(15), Validators.pattern('[a-zA-Z ]+$')]),
+        state: new FormControl(this.userInfo.state, [Validators.required, Validators.maxLength(15), Validators.pattern('[a-zA-Z ]+$')]),
         zipcode: new FormControl(this.userInfo.zipCode, [Validators.required,
         Validators.minLength(6), Validators.maxLength(6), Validators.pattern('[0-9]{6}$')])
       }),
@@ -81,11 +81,38 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this._activatedRoute.paramMap.subscribe(parameterMap => {
+      const userName: string = parameterMap.get('userName');
+      this.getUserInfoByUserName(userName);
+    });
+   }
 
   ngAfterViewInit(): void {
     this.registerForm.controls['firstName'].setValue(this.userInfo === null || this.userInfo === undefined
       || this.userInfo.firstName === null || this.userInfo.firstName === undefined ? '' : this.userInfo.firstName);
+  }
+
+  getUserInfoByUserName(userName: string) {
+    if (userName === undefined || userName === '') {
+      this.userInfo = {
+        userName: '',
+        firstName: '',
+        middleName: '',
+        lastName: '',
+        street: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        email: '',
+        password: ''
+      };
+    } else {
+      this.userInfoService.getUserInfoByUserName(userName).subscribe(
+        (userInfoResult) => this.userInfo = userInfoResult,
+        (error: any) => console.log(error)
+      );
+    }
   }
 
   onSubmitRegister(registerForm: NgForm) {
@@ -104,7 +131,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   onClickYes(registerForm: NgForm) {
-    console.log('now resdy to resiter the user');
+    console.log('now ready to resiter the user');
     console.log(registerForm);
     console.log(this.userInfo.firstName + this.userInfo.lastName + this.userInfo.middleName + this.userInfo.userName);
     this.userInfoService.addUserInfo(this.userInfo).subscribe(
