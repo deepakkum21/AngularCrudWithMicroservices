@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: EmployeeDbRegister
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: deepak.kumar
+Implementation-Vendor-Id: com.stpl.deepak.employee
+Build-Jdk: 1.8.0_101
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/EmployeeDbRegister
+Created-By: Maven Integration for Eclipse
+
