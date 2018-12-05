@@ -89,8 +89,7 @@ The below command will perform following task:-
 Now, go to the folder (MyFirstApp) that contains our angular project, by executing the following command. cd stands for change directory
 cd MyFirstApp
 
-![At this point in Visual Studio Code you will see all the Angular project files. node_modules folder, that conatins all the installed packages]
-(https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20create%20new%20project.png)
+![At this point in Visual Studio Code you will see all the Angular project files. node_modules folder, that conatins all the installed packages](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20create%20new%20project.png)
 #### To run the project using Angular CLI
 **ng serve --open**
 the above Command will do following things:-
@@ -135,7 +134,7 @@ The table below shows the common options, their data types, default values, alia
 1. .angular-cli.json till - V5 
 2. .angular.json from V6
 
-![configuration file that the Angular CLI uses]()
+![configuration file that the Angular CLI uses](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/Angular%20CLI%20configuration%20file.png)
 
 #### The settings from this file are used when we 
 1. Generate angular features likes components, pipes, services etc
@@ -144,8 +143,8 @@ The table below shows the common options, their data types, default values, alia
 
 #### The table below shows some of the settings and their purpose. 
 
-| **Setting** |	**Purpose** |
-| ----------- | ----------- |
+| **Setting    ** |	**Purpose** |
+| --------------- | ----------- |
 | project : name |	Name of the project |
 | apps: root |	The root directory of the application. Default is **src**. We can change this using the **"source-dir"** option when generating a new angular project using the **"ng new"** command |
 | apps: outDir |	The output directory for build results. Default is **dist** |
