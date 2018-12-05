@@ -178,7 +178,7 @@ The table below shows the purpose of each file/folder.
 | **File / Folder** |	**Purpose** |    
 | ----------------- | ------------- |    
 | package.json |	This file contains the packages to build and run our application. It contains two sets of packages, dependencies and devDependencies. The dependencies are essential for running the application. The devDependencies are only required to develop the application. These packages are installed into the node_modules folder by the Node Package Manager (npm), when npm install commaned is excuted. You can also add your own custom scripts here.
-"scripts" property in package.json file contains the useful npm commands. Notice we have "start": "ng serve". This means when we execute npm start it executes ng serve which builds and starts the server. In addition if you also want to launch the browser and open the application 
+"scripts" property in package.json file contains the useful npm commands. Notice we have "start": "ng serve". This means when we execute npm start it executes ng serve which builds and starts the server. In addition if you also want to launch the browser and open the application
 CHANGE **"start": "ng serve" TO "start": "ng serve --open"** 
 now when you will execute command **npm start** it will execute ng serve --open |  
 | node_modules |	The packages specified in package.json file are installed into this folder when we run npm install command |
@@ -193,7 +193,7 @@ now when you will execute command **npm start** it will execute ng serve --open 
 | tslint.json |	Angular has a linting tool that checks our TypeScript code for programmatic and stylistic errors as well as non-adherence to coding standards and conventions. tslint.json is the configuration file for linting. |
 
 ## Angular project/src folder structure
-![src folder structure]()
+![src folder structure](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/src%20folder%20structure.PNG)
 The following table has "src" folder and it's contents. 
 
 | **File / Folder** |	**Purpose** |
@@ -209,7 +209,7 @@ The following table has "src" folder and it's contents.
 | test.ts |	This file is the main entry point for unit tests and loads all the .spec and framework files |
 | tsconfig.app.json |	TypeScript compiler configuration for the Angular app |
 | tsconfig.spec.json |	TypeScript compiler configuration for the unit tests |
-| typings.d.ts |	This is the TypeScript typings file. Many JavaScript libraries, such as jQuery, Angular etc extend the JavaScript environment with features and syntax that the TypeScript compiler doesn't recognize natively. When the typeScript compiler doesn't recognize something, it throws an error. So, we use TypeScript type definition files to tell the compiler about those libraries. These TypeScript type definition files have the extension d.ts. TypeScript editors leverage these type definition files to display type information  
+| typings.d.ts |	This is the TypeScript typings file. Many JavaScript libraries, such as jQuery, Angular etc extend the JavaScript environment with features and syntax that the TypeScript compiler doesn't recognize natively. When the typeScript compiler doesn't recognize something, it throws an error. So, we use TypeScript type definition files to tell the compiler about those libraries. These TypeScript type definition files have the extension d.ts. TypeScript editors leverage these type definition files to display type information.
 Many libraries include type definition files in their npm packages. Angular is one such library. For example, if you look inside node_modules/@angular/core/ folder in an Angular application, it already contains the type definition files. All the files that have the extenstion d.ts are the type definition files. |
 | app.component. 
 {ts,html,css,spec.ts} |	The root component (AppComponent) TypeScript, HTML template, StyleSheet and Spec files |
