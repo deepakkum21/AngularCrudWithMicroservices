@@ -1,4 +1,4 @@
-PS C:\Users\deepak.kumar> node -v
+﻿PS C:\Users\deepak.kumar> node -v
 v9.2.0
 PS C:\Users\deepak.kumar> npm -v
 5.5.1
@@ -697,3 +697,8 @@ import { Observable, throwError } from 'rxjs';
  how to populate angular formarray with existing data. 
  ======================================================
  https://csharp-video-tutorials.blogspot.com/2018/11/angular-populate-formarray.html
+
+
+ what are Angular modules and why we need them in an Angular project. 
+=====================================================================
+https://csharp-video-tutorials.blogspot.com/2018/12/angular-modules-explained.html
