@@ -229,19 +229,21 @@ OR the shortcut as shown below. In the following command the letter g stands for
 1. A folder with name abc is created
 2. The component files (Component class, View template, CSS file and the spec file ) are created and placed inside the folder "abc"
 3. The root module file (app.module.ts) is also updated with our new component i.e the required import statement to import the abc component from the component file is included and the component is also declared in the declarations array of the *@NgModule()* decorator
-![When we execute ng g c abc]()
+
+![When we execute ng g c abc](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20generate%20component%20example.png)
 
 #### Generating a new component without a folder : 
-To create a component without a folder, use --flat option with the ng generate command
-![When we execute ng g c pqr --flat]()
+To create a component without a folder, use --flat option with the ng generate command    
 
-![Placing the flat component files in a different folder other than app ng g c abc/jkl --flat]()
+![When we execute ng g c pqr --flat](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20generate%20component%20without%20folder.png)
 
-![Using --dry-run flag with component generation ]()
+![Placing the flat component files in a different folder other than app ng g c abc/jkl --flat](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20flat%20component%20placing%20in%20another%20component.png)
 
-![want an inline template and styles instead of an external template and stylesheet, use -it flag for inline template and -is flag for inline styles]()
+![Using --dry-run flag with component generation ](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20generate%20component%20dry%20run.png)
 
-![sass instead of CSS with your component, use the --style=scss flag with ng generate command. If you want less use --style=less]()
+![want an inline template and styles instead of an external template and stylesheet, use -it flag for inline template and -is flag for inline styles](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20generate%20component%20without%20spec.png)
+
+![sass instead of CSS with your component, use the --style=scss flag with ng generate command. If you want less use --style=less](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20generate%20component%20with%20scss.png)
 
 
 
