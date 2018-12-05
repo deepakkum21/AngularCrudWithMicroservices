@@ -124,8 +124,36 @@ The table below shows the common options, their data types, default values, alia
 
 | **Flag** |	**Type** |	**Default** |	**Alias** |	**Purpose** |
 | -------- | ----------- | ------------ | ----------- | ----------- |
-| --dry-run |	Boolean |	false |	-d	Run through without making any changes. Just reports the files that will be created |
+| --dry-run |	Boolean |	false |	-d |	Run through without making any changes. Just reports the files that will be created |
 | --skip-install |	Boolean |	false |	-si |	Skip installing packages |
 | --skip-tests |	Boolean |	false |	-st |	Skip creating tests |
 | --inline-style |	Boolean |	false |	-is |	Use inline styles when generating the new application |
 | --inline-template |	Boolean |	false |	-it |	Use inline templates when generating the new project |
+
+
+## Angular CLI configuration file 
+1. .angular-cli.json till - V5 
+2. .angular.json from V6
+
+![configuration file that the Angular CLI uses]()
+
+#### The settings from this file are used when we 
+1. Generate angular features likes components, pipes, services etc
+2. Run unit and end-to-end tests
+3. Build the application etc.
+
+#### The table below shows some of the settings and their purpose. 
+
+| **Setting** |	**Purpose** |
+| ----------- | ----------- |
+| project : name |	Name of the project |
+| apps: root |	The root directory of the application. Default is **src**. We can change this using the **"source-dir"** option when generating a new angular project using the **"ng new"** command |
+| apps: outDir |	The output directory for build results. Default is **dist** |
+| apps: assets |	List of application assets that you want to copy when building your project. By default, the **src/assets/** folder and **src/favicon.ico** are copied over |
+| apps: index |	The name of the start HTML file which is **index.html** by default |
+| apps: main |	The name of the main entry-point file. **main.ts** by default |
+| apps: polyfills |	The name of the **polyfills** file. Angular is built on the latest standards of the web platform. Targeting such a wide range of browsers is challenging because not all browsers support all features of modern browsers. This can be compensated by using polyfill scripts that implement missing features in JavaScript |
+| apps: styles |	Global styles to be included in the build. Default is **styles.css**. We can also use **less** or **scss**. To change to less or scss, use the **"style"** option when generating a new angular project using the **"ng new"** command |
+| apps: prefix |	The selector prefix to apply for the generated components. Default is **"app"**. This can be changed by using the **"prefix"** option when generating a new angular project using the **"ng new"** command |
+
+#### The important point
