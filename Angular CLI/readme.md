@@ -53,4 +53,17 @@ Run Command Prompt as an administrator and execute the following command.
     **npm install -g @angular/cli@6.1.1**
 
   
-![note: If you see a tree structure as shown below, you have Angular CLI installed successfully.](https://github.com/deepakkum21/AngularCrudWithMicroservices/tree/master/Angular%20CLI/images)
+![note: If you see a tree structure as shown below, you have Angular CLI installed successfully.](https://github.com/deepakkum21/AngularCrudWithMicroservices/blob/master/Angular%20CLI/images/successfull%20installation%20pic.png)  
+
+#### To verify the version of Angular CLI installed
+**ng -v**
+![]()
+
+#### If problems installing Angular CLI
+1. Delete "npm" folder from the following path C:\Users\Your_UserName\AppData\Roaming 
+    - If you cannot find "AppData" folder, make sure in your windows operating system, you have "Show hidden files, folders, and drives" option is turned on. "AppData" is a hidden folder.
+2. Once you have the "npm" folder deleted, uninstall node.js. On a windows machine you can uninstall node.js from Control Panel\All Control Panel Items\Programs and Features. Right click on "Node.js" and select "uninstall" from the context menu. 
+3. Reinstall Node.js by downloading the appropriate installer for your operating system from the following link.
+https://nodejs.org/en/download/ 
+4. Run Command Prompt as an Administrator and try to install Angular CLI again using the following command **npm install -g @angular/cli**
+
