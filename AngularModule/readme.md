@@ -31,3 +31,12 @@ there are several benefits of splitting an angular application into multiple Ang
 | Code Reuse |	Modules are great way to reuse code. For example, if you have components, directives or pipes that you want to reuse, you include them in a Shared module and import it into the module where you need them rather than duplicating code. Code duplication is just plain wrong, and results in unmaintainable and error prone code. |
 | Code Maintenance |  Since Angular Modules promote code reuse and separation of concerns, they are essential for writing maintainable code in angular projects |
 | Performance |	Another great reason to refactor your application into modules is performance. Angular modules can be loaded either eagerly when the application starts or lazily on demand when they are actually needed or in the background. Lazy loading angular modules can significantly boost the application start up time. |
+
+
+## @NgModule Decorator 
+Angular module is a class that is decorated with **@NgModule decorator**. The @NgModule decorator has the following properties. 
+- declarations
+- bootstrap
+- providers
+- imports
+- exports
