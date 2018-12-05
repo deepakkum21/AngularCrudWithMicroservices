@@ -143,8 +143,8 @@ The table below shows the common options, their data types, default values, alia
 
 #### The table below shows some of the settings and their purpose. 
 
-| **Setting    ** |	**Purpose** |
-| --------------- | ----------- |
+| **Setting** |	**Purpose** |
+| ----------- | ----------- |
 | project : name |	Name of the project |
 | apps: root |	The root directory of the application. Default is **src**. We can change this using the **"source-dir"** option when generating a new angular project using the **"ng new"** command |
 | apps: outDir |	The output directory for build results. Default is **dist** |
@@ -156,3 +156,38 @@ The table below shows the common options, their data types, default values, alia
 | apps: prefix |	The selector prefix to apply for the generated components. Default is **"app"**. This can be changed by using the **"prefix"** option when generating a new angular project using the **"ng new"** command |
 
 #### The important point
+1. The values in the Angular CLI configuration file depends on the options that you have used with the **"ng new"** command when generating a new angular project.
+    - For example, if you do not use the **--prefix option** *with the "ng new" command*, then the **default value "app" is stored in the configuration file** for "prefix" setting. So the root component (AppComponent) that is created at the application generation time has "app" as the selector prefix.
+
+2. Instead if you want **"deepak" as the prefix, use --prefix flag along with "ng new" command**. When you do this several things happen 
+    - "deepak" is stored as the "prefix" setting value in .angular-cli.json configuration file
+    - "deepak" is used as the selector prefix for the root component that the "ng new" command generates . 
+    eg: ng new --prefix deepak or ng new App --skip-install --prefix deepak
+    - Any new component that you generate in the future using the following command will also have "deepak" as the selector prefix
+      ng generate component componentName
+    - If you want to override the prefix setting in the angular cli configuration file, you can use --prefix option with the generate command as shown below. This      will generate the component "xyz" with the prefix "tech" instead of "deepak" 
+    e.g: ng generate component compName --prefix tech
+    - Some of the options like --prefix can be used with several commands like ng new and ng generate 
+
+
+## Angular project structure
+![project structure](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20create%20new%20project.png)
+The table below shows the purpose of each file/folder. 
+| **File / Folder** |	**Purpose** |
+| ----------------- | ------------- |
+| package.json |	This file contains the packages to build and run our application. It contains two sets of packages, dependencies and devDependencies. The dependencies are essential for running the application. The devDependencies are only required to develop the application. These packages are installed into the node_modules folder by the Node Package Manager (npm), when npm install commaned is excuted. You can also add your own custom scripts here. 
+
+"scripts" property in package.json file contains the useful npm commands. Notice we have "start": "ng serve". This means when we execute npm start it executes ng serve which builds and starts the server. In addition if you also want to launch the browser and open the application 
+CHANGE "start": "ng serve" TO "start": "ng serve --open" |
+| node_modules |	The packages specified in package.json file are installed into this folder when we run npm install command |
+| e2e Folder |	Contains end-to-end tests and their configuration files. We will discuss end-to-end tests in our upcoming videos |
+| .angular-cli.json |	This is the Angular CLI configuration file. We discussed the use of this file in our previous video. |
+| .editorconfig |	Configuration file for Visual Studio Code. The settings in this file let you set certain code style guidelines. For example what indent_style do you want - spaces or tabs and what should be the indent size etc. You can share this editorconfig file with other developers to maintain consistent coding styles. To read more about editor configuration please visit http://editorconfig.org |
+| .gitignore |	This file is used to determine files and folders you don't want to check in to source control. For example one of the folders we do not want to check in to source control is /dist folder which is auto generated when we build the application. So this folder is listed in this file. So, all the files and folders listed in this file are ignored, when a change set is checked in to source control. |
+| karma.conf.js |	Karma is the unit test runner for angular applications. As the name implies, karma.conf.js is the configuration file for Karma. |
+| protractor.conf.js	Protractor is an end-to-end test framework for Angular applications. As the name implies, protractor.conf.js is the configuration file for Protractor. |
+| README.md |	This is a README file which contains the commonly used Angular CLI commands out of the box. You may enhance it with your own project documentation so that anyone checking out the repo knows the commands to use to build, run and test your app. |
+| tsconfig.json |	This is the TypeScript compiler configuration file. This file has several TypeScript compiler configuration settings. For example, to compile TypeScript to JavaScript on saving a TypeScript file set compileOnSave setting to true. If you do not want .map files to be generated, set sourceMap to false. .map files are used for debugging your application. |
+| tslint.json |	Angular has a linting tool that checks our TypeScript code for programmatic and stylistic errors as well as non-adherence to coding standards and conventions. tslint.json is the configuration file for linting. We will discuss the settings in this file when we discuss linting in our upcoming videos. |
+
+
