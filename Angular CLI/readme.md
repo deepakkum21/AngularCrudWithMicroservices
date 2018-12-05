@@ -173,13 +173,14 @@ The table below shows the common options, their data types, default values, alia
 ## Angular project structure
 ![project structure](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20create%20new%20project.png)   
 
-The table below shows the purpose of each file/folder.     
-| **File / Folder** |	**Purpose** |
-| ----------------- | ------------- |
+The table below shows the purpose of each file/folder.    
+
+| **File / Folder** |	**Purpose** |    
+| ----------------- | ------------- |    
 | package.json |	This file contains the packages to build and run our application. It contains two sets of packages, dependencies and devDependencies. The dependencies are essential for running the application. The devDependencies are only required to develop the application. These packages are installed into the node_modules folder by the Node Package Manager (npm), when npm install commaned is excuted. You can also add your own custom scripts here. 
 
 "scripts" property in package.json file contains the useful npm commands. Notice we have "start": "ng serve". This means when we execute npm start it executes ng serve which builds and starts the server. In addition if you also want to launch the browser and open the application 
-CHANGE "start": "ng serve" TO "start": "ng serve --open" |
+CHANGE "start": "ng serve" TO "start": "ng serve --open" |  
 | node_modules |	The packages specified in package.json file are installed into this folder when we run npm install command |
 | e2e Folder |	Contains end-to-end tests and their configuration files. We will discuss end-to-end tests in our upcoming videos |
 | .angular-cli.json |	This is the Angular CLI configuration file. We discussed the use of this file in our previous video. |
@@ -189,6 +190,6 @@ CHANGE "start": "ng serve" TO "start": "ng serve --open" |
 | protractor.conf.js	Protractor is an end-to-end test framework for Angular applications. As the name implies, protractor.conf.js is the configuration file for Protractor. |
 | README.md |	This is a README file which contains the commonly used Angular CLI commands out of the box. You may enhance it with your own project documentation so that anyone checking out the repo knows the commands to use to build, run and test your app. |
 | tsconfig.json |	This is the TypeScript compiler configuration file. This file has several TypeScript compiler configuration settings. For example, to compile TypeScript to JavaScript on saving a TypeScript file set compileOnSave setting to true. If you do not want .map files to be generated, set sourceMap to false. .map files are used for debugging your application. |
-| tslint.json |	Angular has a linting tool that checks our TypeScript code for programmatic and stylistic errors as well as non-adherence to coding standards and conventions. tslint.json is the configuration file for linting. We will discuss the settings in this file when we discuss linting in our upcoming videos. |
+| tslint.json |	Angular has a linting tool that checks our TypeScript code for programmatic and stylistic errors as well as non-adherence to coding standards and conventions. tslint.json is the configuration file for linting. |
 
 
