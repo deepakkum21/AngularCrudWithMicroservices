@@ -90,7 +90,7 @@ Now, go to the folder (MyFirstApp) that contains our angular project, by executi
 cd MyFirstApp
 
 ![At this point in Visual Studio Code you will see all the Angular project files. node_modules folder, that conatins all the installed packages]
-()
+(https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20create%20new%20project.png)
 #### To run the project using Angular CLI
 **ng serve --open**
 the above Command will do following things:-
@@ -124,8 +124,8 @@ The table below shows the common options, their data types, default values, alia
 
 | **Flag** |	**Type** |	**Default** |	**Alias** |	**Purpose** |
 | -------- | ----------- | ------------ | ----------- | ----------- |
-| --dry-run |	Boolean	false |	-d	Run through without making any changes. Just reports the files that will be created |
-| --skip-install |	Boolean	false |	-si	Skip installing packages |
-| --skip-tests |	Boolean	false |	-st	Skip creating tests |
-| --inline-style |	Boolean	false |	-is	Use inline styles when generating the new application |
-| --inline-template |	Boolean	false |	-it	Use inline templates when generating the new project |
+| --dry-run |	Boolean |	false |	-d	Run through without making any changes. Just reports the files that will be created |
+| --skip-install |	Boolean |	false |	-si |	Skip installing packages |
+| --skip-tests |	Boolean |	false |	-st |	Skip creating tests |
+| --inline-style |	Boolean |	false |	-is |	Use inline styles when generating the new application |
+| --inline-template |	Boolean |	false |	-it |	Use inline templates when generating the new project |
