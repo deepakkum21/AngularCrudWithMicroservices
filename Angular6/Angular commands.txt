@@ -1,0 +1,699 @@
+PS C:\Users\deepak.kumar> node -v
+v9.2.0
+PS C:\Users\deepak.kumar> npm -v
+5.5.1
+
+ Update available 5.5.1 → 6.4.1 
+To update npm globally 
+  Run npm i -g npm to update 
+
+to install latest version on angular
+------------------------------------
+npm install -g @angular/cli
+to install particular version of cli
+npm install -g @angular/cli@6.1.1  
+
+to install fake server (Json-Server)
+====================================
+npm install -g json-server
+to watch 
+json-server --watch fileName.json
+
+to create a new app
+---------------------
+ng new appName -d
+-d = Run with "dry run" no changes were made.
+		it list all the folder or files that will be created without actually creating it
+		
+to phically create a app
+-----------------------
+ng new appName
+	--skip-tests
+	this will not create spec.ts i.e. unit test files
+
+	
+changes in angular 5 and angular 6 file listing
+----------------------------------------------
+in angular cli cofig file in angular 5 it was angular-cli.json	
+but in angular6 it is angular.json 
+For more info on file info check angular cli tutorial video 7&8
+
+To run angular app in watch mode
+------------------------------
+ng serve -open
+
+to install bootstrap and jquery
+---------------------------------
+npm install bootstrap@3 jquery --save
+
+to add external installed styles
+--------------------------------
+add realtive path in the styles of angular.json
+
+To test wheather the added style is working or not 
+--------------------------------------------------
+paste the realative path in the browser after http://localhost:4200/
+
+To create a component
+-----------------------
+ng generate component folderName/component-name --spec=flase --flat=true
+	--spec=false - this will not create spec unit test file
+	--flat=true - this will avoid creating component in its dedicated folder
+	
+create separate routing module
+------------------------------
+1. for separation of routing code
+2. easy maintainability of routing code
+
+to create module
+----------------
+ng generate module module-name --module=moduleName
+	--module=moduleName = this will automatically add created module in the moduleName with req import statement
+	
+	
+to create a class using cli
+---------------------------
+ng generate class className(without ts extension)	
+	
+To bind form with formGroup directive property
+------------------------------------------------
+[formGroup]	="formGropuName"
+	
+To bind formControl name 
+------------------------
+formControlName= "formControlName"
+
+to submit a form
+----------------
+(ngSubmit)="onSubmitClick()"
+
+
+Both FormControl and FormGroup classes inherit from AbstractControl base class
+The AbstractControl class has properties that help us track both FormControl and FormGroup value and state
+
+The following are some of the useful properties provided by the AbstractControl class 
+->value
+->errors
+->valid
+->invalid
+->dirty
+->pristine
+->touched
+->untouched
+
+AbstractControl also provides the following methods
+-> setValidators()
+-> clearValidators()
+-> updateValueAndValidity()
+-> setValue()
+-> patchValue()
+-> Reset()
+
+FormControl instance tracks the value and state of the individual html element it is associated with
+FormGroup instance tracks the value and state of all the form controls in it's group
+
+To access a FormControl in a FormGroup, we can use one of the following 2 ways.
+1. employeeForm.controls.fullName.value
+2. employeeForm.get('fullName').value
+
+To Update form form Controls
+use setValue() to update all form controls and patchValue() to update a sub-set of form controls
+
+
+In Angular, there are 2 ways to create reactive forms 
+1. Explicitly creating instances of FormGroup and FormControl classes using the new keyword. 
+2. Using the FormBuilder class
+
+The FormBuilder class provides syntactic sugar that shortens creating instances of a FormControl, FormGroup, or FormArray.
+The FormBuilder service has three methods:  
+control() - Construct a new FormControl instance
+group() - Construct a new FormGroup instance
+array() - Construct a new FormArray instance
+
+Note: FormBuilder is a service so,inject it into the component using the constructor 
+
+
+For Validators
+---------------
+Import Angular Validators class  : import { Validators } from '@angular/forms'
+
+All of the functions are static
+Validators.required  =>	    Validate that a field has a value. Used for required fields. For example, Name is required.
+Validators.requiredTrue  =>	Validate that the field value is true. This validator is commonly used on a required checkbox. For example, "I Agree to the terms" checkbox must be checked to submit the form.
+Validators.email  =>	        Validate that the field value has a valid email pattern. For example, abc is not a valid email.
+Validators.pattern  =>	        Validate that the field value matches the specified regex pattern.
+Validators.min  =>	            Validate that the field value is greater than or equal to the provided number. For example, minimum age to vote is 18.
+Validators.max  =>	            Validate that the field value is less than or equal to the provided number. For example, people over the age of 90 are not eligible for this insurance policy.
+Validators.minLength  =>	    The number of characters in the field must be greater than or equal to the provided minimum length. For example, Full Name must be at least 3 characters.
+Validators.maxLength  =>	    The number of characters in the field must be less than or equal to the provided maximum length. For example, Description cannot exceed 500 characters.
+
+
+how to monitor and react when a form control or form group value changes. 
+--------------------------------------------------------------------------
+Angular valueChanges Observable 
+1. Both FormControl and FormGroup classes inherit from the base AbstractControl class
+2. AbstractControl class has valueChanges property
+3. valueChanges property is an observable that emits an event every time the value of the control changes
+4. To be able to monitor and react when the FormControl or FormGroup value changes, subscribe to the valueChanges observable 
+
+e.g.
+ // Subscribe to valueChanges observable of formControl
+  this.employeeForm.get('fullName').valueChanges.subscribe(
+    value => {
+      console.log(value);
+    }
+  );
+
+  // Subscribe to FormGroup valueChanges observable
+	this.employeeForm.valueChanges.subscribe(
+	value => {
+    console.log(JSON.stringify(value));
+	}
+	);
+
+Subscribing to valueChanges observable and there by monitoring a form control or form group allow us to do several things like 
+1. Implementing auto-complete feature
+2. Dynamically validating form controls
+3. Move validation messages from the view template to the component class
+
+
+how to loop through all form controls in a formgroup including nested form groups in a reactive form.
+----------------------------------------------------------------------------------------------------
+eg
+logKeyValuePairs(group: FormGroup): void {
+  // loop through each key in the FormGroup
+  Object.keys(group.controls).forEach((key: string) => {
+    // Get a reference to the control using the FormGroup.get() method
+    const abstractControl = group.get(key);
+    // If the control is an instance of FormGroup i.e a nested FormGroup
+    // then recursively call this same method (logKeyValuePairs) passing it
+    // the FormGroup so we can get to the form controls in it
+    if (abstractControl instanceof FormGroup) {
+      this.logKeyValuePairs(abstractControl);
+      // If the control is not a FormGroup then we know it's a FormControl
+    } else {
+      console.log('Key = ' + key + ' && Value = ' + abstractControl.value);
+    }
+  });
+}
+
+can help us perform the following on all the form controls in a reactive form 
+1. Reset form controls
+2. Enable or disable all form controls or just the nested formgroup controls
+3. Set validators and clear validators
+4. Mark form controls as dirty, touched, untouched, pristine etc.
+5. Move validation messages and the logic to show and hide them into the component class from the view template.
+
+
+how to move validation messages to the component class
+--------------------------------------------------------
+
+Benefits:
+1. Easily unit test validation logic
+2. Instead of hard-coding validation messages in the application, we can load them from an external source like a database or a file.
+3. Change validation dynamically at run-time based on the decisions made in code or user selections
+
+logValidationErrors(formGroup: FormGroup): void {
+    // loop through each key in the FormGroup
+    Object.keys(formGroup.controls).forEach((key: string) => {
+      // Get a reference to the control using the FormGroup.get() method
+      const abstractControl = formGroup.get(key);
+      // If the control is an instance of FormGroup i.e a nested FormGroup
+      // then recursively call this same method (logKeyValuePairs) passing it
+      // the FormGroup so we can get to the form controls in it
+      if (abstractControl instanceof FormGroup) {
+        this.logValidationErrors(abstractControl);
+        // If the control is not a FormGroup then we know it's a FormControl
+      } else {
+         // Clear the existing validation errors
+        this.formErrors[key] = '';
+        if (abstractControl && !abstractControl.valid) {
+          // Get all the validation messages of the form control
+          // that has failed the validation
+          const errorMessage = this.validationMessages[key];
+          // Find which validation has failed. For example required,
+          // minlength or maxlength. Store that error message in the
+          // formErrors object. The UI will bind to this object to
+          // display the validation errors
+          for (const errorKey in abstractControl.errors) {
+            if (errorKey) {
+              this.formErrors[key] += errorMessage[errorKey] + ' ';
+            }
+          }
+        }
+      }
+    });
+  }
+  
+  
+  how to move the logic to show and hide validation messages from the view template into the component class
+  -----------------------------------------------------------------------------------------------------------
+  
+  <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
+  
+  The only problem at the moment is that when a control loses focus, our validation is not triggered. 
+  This is because valueChanges observable does not emit an event when the control loses focus. It only emits an event when the value changes. 
+  sol:- One work around for this is to bind to the blur event and call validation function (logValidationErrors()) manually. 
+  
+  e.g.
+  <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
+  <label class="col-sm-2 control-label" for="email">Email</label>
+  <div class="col-sm-8">
+    <input id="email" type="text" class="form-control"
+           formControlName="email" (blur)="logValidationErrors()">
+    <span class="help-block" *ngIf="formErrors.email">
+      {{formErrors.email}}
+    </span>
+  </div>
+</div>
+
+
+ how to add or remove validators dynamically at runtime.
+ ------------------------------------------------------
+ e.g. if one the feild is optional
+ 
+ requirement:
+ ++++++++++++
+ So here is our requirement  
+1. Add the "required" validator to the Phone form control when the user selects "Phone" as their contact preference
+2. On the other hand, remove the "required" validator from the Phone form control, when the user selects "Email" as their contact preference
+3. So on the "Phone" form control, we have to dynamically add or remove the required validator function
+
+This can be very easily achieved using the following 3 functions 
+=> setValidators()
+=> clearValidators()
+=> updateValueAndValidity()
+These methods are available in the AbstractControl class. Since FormControl inherits from AbstractControl, these methods are also available to FormControl class.
+
+Subscribe to contactPreference form control valueChanges observable 
+in ngOnInIt()
+add
+this.employeeForm.get('contactPreference')
+                 .valueChanges.subscribe((data: string) => {
+  this.onContactPrefernceChange(data);
+});
+
+onContactPrefernceChange(selectedValue: string) {
+  const phoneFormControl = this.employeeForm.get('phone');
+  if (selectedValue === 'phone') {
+    phoneFormControl.setValidators(Validators.required);
+  } else {
+    phoneFormControl.clearValidators();
+  }
+  phoneFormControl.updateValueAndValidity();
+}
+
+
+
+creating and using a custom validator in an Angular reactive form. 
+--------------------------------------------------------------------
+Just like a builtin validator, a custom validator is also a function. If you take a look at the required built-in function, notice it takes AbstractControl as a parameter. 
+Both FormControl and FormGroup inherits from AbstractControl class. Specifying AbstractControl as parameter type, allows us to pass either a FormControl or a FormGroup to validate. 
+
+function emailDomain(control: AbstractControl): { [key: string]: any } | null {
+  const email: string = control.value;
+  const domain = email.substring(email.lastIndexOf('@') + 1);
+  if (email === '' || domain.toLowerCase() === 'pragimtech.com') {
+    return null;
+  } else {
+    return { 'emailDomain': true };
+  }
+}
+
+
+creating and using a custom validator with parameters. 
+------------------------------------------------------
+When We want to make the custom validator reusable with any domain name. We should be able to pass the domain name as a parameter to the emailDomain custom validator function
+e.g.   email: ['', [emailDomain('pragimtech.com')]]
+The following built-in validators have parameters. 
+ min
+ max
+ minlength
+ maxlength
+Notice the min() built-in validator function. It takes in a number as a parameter and returns ValidatorFn.
+	min(min: number): ValidatorFn;
+		ValidatorFn stands from validator function. So this min() function is taking in a number as a parameter and returns a validator function.
+		a closure as, a function inside another function i.e an inner function and an outer function. 
+		The inner function has access to the outer function’s variables and parameters in addition to it's own variables and parameters.
+		
+function emailDomain(domainName: string) {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const email: string = control.value;
+    const domain = email.substring(email.lastIndexOf('@') + 1);
+    if (email === '' || domain.toLowerCase() === domainName.toLowerCase()) {
+      return null;
+    } else {
+      return { 'emailDomain': true };
+    }
+  };
+}
+Code Explanation 
+++++++++++++++++
+1. We have 2 functions here. An inner function and an outer function.
+2. The outer function has a name (emailDomain), but the inner function does not have a name. It is an anonymous function.
+3. The inner anonymous function has access to the outer function parameter domainName.
+4. You can have as many parameters as you want in the outer function, then inner function will have access to all of them in addition to it's own parameters.
+
+ 
+ how to make a custom validator reusable in Angular.
+ --------------------------------------------------
+ custom validator function reusable by including it as a static function in a separate class. 	
+ now import that customValidator class using import keyword
+ email: ['', [CustomValidators.emailDomain('dell.com')]]
+ 
+ cross field validation in a reactive form. 
+ -----------------------------------------
+ Email and confirmEmail validation
+ +++++++++++++++++++++++++++++++++
+requirement :-
+-----------
+1. Confirm Email field is required and if a value is present it should match with the Email field value.
+2. If no value is entered, it should display required error
+3. If a value is present and does not match with Email field, it should display do not match validation error
+
+implementation:-
+--------------
+->To validate if Email and Confirm Email fields have same value, we need to compare 2 Form Controls. 
+->If you look at a Validator function in Angular, it only accepts either a FormGroup or a FormControl as a parameter. 
+->We cannot pass 2 form controls to the validator function, but what we can do is group them using a nested formgroup and then pass that nested formgroup as a parameter to the Validator function.
+
+// Nested form group (emailGroup) is passed as a parameter. Retrieve email and
+// confirmEmail form controls. If the values are equal return null to indicate
+// validation passed otherwise an object with emailMismatch key. Please note we
+// used this same key in the validationMessages object against emailGroup
+// property to store the corresponding validation error message
+function matchEmails(group: AbstractControl): { [key: string]: any } | null {
+  const emailControl = group.get('email');
+  const confirmEmailControl = group.get('confirmEmail');
+
+  if (emailControl.value === confirmEmailControl.value || confirmEmailControl.pristine) {
+    return null;
+  } else {
+    return { 'emailMismatch': true };
+  }
+}
+
+and also necessary changes are made in the formErors collection and ErrorMessage collection
+also the validator is defined for the email group not for the email controls
+e.g.
+	emailGroup: this.fb.group({
+      email: ['', [Validators.required, emailDomain('dell.com')]],
+      confirmEmail: ['', [Validators.required]],
+    }, { validator: matchEmails }),
+	
+	
+	
+To build an Angular Reactive Form we use three fundamental building blocks 
+FormControl
+FormGroup
+FormArray
+
+FormArray in Angular. more info (https://csharp-video-tutorials.blogspot.com/2018/10/angular-formarray-example.html)
+=====================
+1. A FormArray as the name implies is an array. It can contain an array of  
+   -> FormControls
+   -> FormGroups
+   -> Nested FormArrays
+   
+2. usually use an array to hold like items, but a FormArray can contain unlike items as well, 
+   i.e a few elements in a given array can be FormControls, a few of them in that same array can be FormGroups and the rest of them can be FormArrays.
+   
+3. eg
+	  const formArray = new FormArray([
+		new FormControl('John', Validators.required),
+		new FormGroup({
+			country: new FormControl('', Validators.required)
+		}),
+		new FormArray([])
+	]);
+	
+4. find the number of elements in a FormArray use the length property  => formArray.length
+
+5. 2 ways to create a FormArray in Angular
+   ---------------------------------------
+	a. Create a FormArray, using the new keyword : eg->
+		const formArray = new FormArray([
+			new FormControl('John', Validators.required),
+			new FormControl('IT', Validators.required),
+		]);
+	b. Create a FormArray, using the array() method of the FormBuilder class : eg->
+		const formArray = this.fb.array([
+			new FormControl('John', Validators.required),
+			new FormControl('IT', Validators.required),
+		]);
+		
+6. The value property of a FormArray, returns an array containing values of each child FormControl.	
+	eg.:
+	const formArray = this.fb.array([
+		new FormControl('John', Validators.required),
+		new FormControl('IT', Validators.required),
+		new FormControl('', Validators.required),
+	]);
+	formArray.value =>	["John", "IT", ""]
+	
+7. properties to determine the state of a FormArray are same as that of FormControl or a FormGroup.
+   touched
+   untouched
+   dirty
+   pristine
+   valid
+   invalid
+   
+8. Useful FormArray methods 
+	-----------------------
+	push ->	      Inserts the control at the end of the array
+	insert ->	  Inserts the control at the specified index in the array
+	removeAt ->	  Removes the control at the specified index in the array
+	setControl -> Replace an existing control at the specified index in the array
+	at ->	      Return the control at the specified index in the array
+	
+9. imp: We can also use a FormGroup to create a group of FormControls. 
+	What is the difference between a FormGroup and a FormArray?
+	----------------------------------------------------------
+	ans: one major difference is that a FormArray data is serialized as an array where as a FormGroup is serialized as an object.  
+
+	
+Creating a FormArray of FormGroup objects
+=========================================
+1. this is preparation for dynamically creating FormGroups at runtime. 
+Every time we click, "Add Skill" button on the "Employee Form" below, we want to dynamically generate a new set of skill related form fields.
+2. In the template, use the formArrayName directive to bind to the skills FormArray. 
+   Now the important point to keep in mind is, in the component class, we only have one FormGroup instance in the skills FormArray. 
+   That one FormGroup instance is present at index position ZERO in the FormArray. This is the reason we have set formGroupName="0". 
+3. With the above 2 changes, the validation is broken. To fix it, modify the code in logValidationErrors() method as shown below. 
+    // We need this additional check to get to the FormGroup
+    // in the FormArray and then recursively call this
+    // logValidationErrors() method to fix the broken validation
+    if (abstractControl instanceof FormArray) {
+      for (const control of abstractControl.controls) {
+        if (control instanceof FormGroup) {
+          this.logValidationErrors(control);
+        }
+      }
+    }   
+	
+generating FormGroups and FormControls dynamically at runtime.  (https://csharp-video-tutorials.blogspot.com/2018/10/angular-dynamic-forms-tutorial.html)
+=============================================================
+requirement: 
+		Every time we click "Add Skill" button we want to generate another set of skill related form controls (i.e Skill, Experience & Proficiency). 
+		
+Step 1 : Include Add Skill button
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-4">
+		<button type="button" class="btn btn-primary" (click)="addSkillButtonClick()">
+		Add Skill
+		</button>
+		</div>
+	</div>
+	
+Step 2 : Include addSkillButtonClick() method in the component class
+-> From the root FormGroup "employeeForm" get a reference to the skills FormArray. Notice we have passed the name of the FormArray (skills) as a parameter to the get() method.
+-> The get() method returns the FormArray as an AbstractControl. We know it's a FormArray so we are type casting it to FormArray.
+-> We are then calling the push() method of the FormArray to push a new FormGroup into the FormArray
+-> The push() method calls addSkillFormGroup() method which returns an instance of the FormGroup with the 3 skill related form controls (skill, experience & proficiency)
+addSkillButtonClick(): void {
+  (<FormArray>this.employeeForm.get('skills')).push(this.addSkillFormGroup());
+}
+
+Step 3 : Loop over "skills" FormArray to dynamically generate the HTML input elements. 
+-> use *ngFor structural directive to loop over the "skills" FormArray
+-> For each FormGroup in the FormArray, the respective HTML input elements (skill, experience & proficiency) will be generated
+-> bind the formGroupName directive to the loop variable i
+-> Since binding to a variable do not forget to use square brackets around [formGroupName] directive, otherwise you will get a run-time error - Cannot find control with path: 'skills -> i'
+<div formArrayName="skills" *ngFor="let skill of employeeForm.get('skills').controls; let i = index">
+  <div [formGroupName]="i">
+      <!-- Skill Name Label & Form Control HTML
+      Experience Label & Form Control HTML
+      Proficiency Label & Form Control HTML -->
+  </div>
+</div>
+  
+  
+ how to generate unique id value for the dynamically created form controls in Angular. (https://csharp-video-tutorials.blogspot.com/2018/11/generate-unique-id-value-for.html)
+ ====================================================================================
+ 1. Well, first of all, IDs on an HTML page are meant to be unique. Having duplication IDs is a terrible idea. Although it may work in some cases, it is semantically incorrect to do so.
+ 2. In our case the application behaves erratically, because of duplicate element IDs. 
+	When we click on a label, we expect it's corresponding input element to receive focus, but, in our case, a different element receives focus. 
+	To fix this we have to generate unique ID values for the input elements.
+	eg
+<div formArrayName="skills"
+      *ngFor="let skill of employeeForm.get('skills').controls; let i = index">
+  <div [formGroupName]="i">
+
+    <div class="form-group" [ngClass]="{'has-error': formErrors.skillName}">
+      <label class="col-sm-2 control-label" attr.for="{{'skillName'+i}}">
+        Skill
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="{{'skillName'+i}}"
+                formControlName="skillName" (blur)="logValidationErrors()"
+                placeholder="C#, Java, Angular etc...">
+        <span class="help-block" *ngIf="formErrors.skillName">
+          {{formErrors.skillName}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>	
+
+Code Explanation 
++++++++++++++++++
+a. *ngFor directive on the formArrayName <div> element loops through all the dynamically generated form groups.
+b. The variable i value will be ZERO when we are looping through the first FormGroup in the skills form array.
+c. The value of i will be ONE, for the second FormGroup, TWO for the third FormGroup so on and so forth.
+d. Notice the id attribute of the skillName textbox. We are dynamically computing it's ID, by appening i variable value to the string skillName
+	id="{{'skillName'+i}}"
+e. This will generate an ID of skillName0 for the first skillName input element, ID of skillName1 for the second skillName input element, so on so forth,
+   to ensure unique ID values are assigned to all the dynamically generated skillName input elements.
+f. In the above expression we are using interpolation. We could also achieve the same using property binding syntax instead of interpolation.
+	[id]="'skillName'+i"
+g. If you are new to property binding, please check out our following video on property binding in Angular
+	https://www.youtube.com/watch?v=RGYfTx9AAQA
+h. Also notice, we are dynamically setting the value of the for attribute of the Skill label.
+	attr.for="{{'skillName'+i}}"
+i. Since the for attribute does not have a corresponding DOM property, we are using Angular's attribute binding.
+j. If you are new to attribute binding, please check out our following video on Attribute binding in Angular
+	https://www.youtube.com/watch?v=OZJiQ5kj9us
+k. With the attribute binding, we are using interpolation. We could also achieve the same using property binding syntax.
+   [attr.for]="'skillName'+i"
+   
+   
+   
+ validating dynamically generated form controls.
+================================================
+1. we are using the loop variable skill, to check if the dynamically generated skillName form control is invalid and touched. 
+   If so, the has-error bootstrap style class is applied. To get to the skillName form control in the skill FormGroup, we are using the get() method on the FormGroup and passing it the form control name.  
+   use 
+   [ngClass]="{'has-error': skill.get('skillName').invalid && skill.get('skillName').touched}"
+   or 
+	[ngClass]="{'has-error': skill.controls.skillName.invalid && skill.controls.skillName.touched}"
+	
+2.  we are using the loop variable skill, to check if the dynamically generated skillName form control has failed required validation and touched. 
+    If so, the <span> element displays the validation error, otherwise hides it	
+	use	
+		<span class="help-block" *ngIf="skill.get('skillName').errors?.required && skill.get('skillName').touched">
+			Skill Name is required
+		</span>
+		
+		note:- Cannot read property 'required' of null error. 
+				might get this error if not used safe navigation operator ? between errors and required
+				
+3. Since the validation messages for the skill form controls are in the template, we do not have to loop through the skill form groups in the form array. 
+   So I have commented the block of code that loops through the FormArray. 	
+	// if (abstractControl instanceof FormArray) {
+    //   for (const control of abstractControl.controls) {
+    //     if (control instanceof FormGroup) {
+    //       this.logValidationErrors(control);
+    //     }
+    //   }
+    // }
+	
+
+validating FormArray in Angular.(https://csharp-video-tutorials.blogspot.com/2018/11/angular-formarray-validation.html)
+=======================================================================================================================
+-> A FormArray can contain form controls, form groups or nested form arrays
+-> If all the 3 form controls are valid, then the form group is valid. 
+-> If all the form groups are valid, then the form array is valid.
+-> Even if a single form control in a form group is invalid, then the form array is invalid.
+if formArray which contains formGroup which further contains formControls and if any of the formControl or formGroup is invalid the FormArray becomes invalid
+
+requirement:-
+	 what we want to do. Until, all the skill related form controls are properly filled and valid, we want to keep "Add Skill" button disabled. 
+	 
+implementation:-
+	even if a single form control is invalid, the entire form array is invalid. So to keep the "Add Skill" button disabled, bind the button disabled property to "skills" form array invalid property as shown below.
+	<button type="button" class="btn btn-primary" (click)="addSkillButtonClick()" [disabled]="employeeForm.get('skills').invalid">
+		Add Skill
+	</button>
+	
+
+how to remove dynamically generated form controls. (https://csharp-video-tutorials.blogspot.com/2018/11/remove-dynamically-created-form.html)
+===============================================================================================================================================
+
+what changes are made in Rxjs Angular 6 from Angular 5
+==================================================
+https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md
+
+Creating a fake online REST API
+================================
+First let's create a fake online REST API. For this we are going to use JSON-Server. 
+
+The following is the JSON Server Github page 
+https://github.com/typicode/json-server 
+
+Execute the following NPM command to install JSON server 
+npm install -g json-server 
+
+Create db.json file in the root project folder. Copy and paste the following JSON data in the file. 
+
+Execute the following command to start the server 
+json-server --watch db.json
+
+
+RxJS 5 vs 6 
+============
+An Angular 6 project, by default uses RxJS version 6. RxJS 6 has some breaking changes compared to RxJS 5.5 and older versions. 
+
+The way we import some of the classes like Observable and Subject has changed in RxJS 6. 
+
+In RxJS 5, we import Observable and Subject classes as shown below.
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+
+In RxJS 6, this has changed to 
+import { Observable, Subject } from 'rxjs';
+
+Similarly, the way we import operators also changed in RxJS 6. To import catchError operator in RxJS 5, we use the following 
+import { catchError } from 'rxjs/operators/catchError';
+
+In RxJS 6, it has changed to the following 
+import { catchError } from 'rxjs/operators';
+
+In RxJS 6, we import all the operators from 'rxjs/operators'
+import { map, delay, catchError } from 'rxjs/operators';
+
+Many classes like ArrayObservable, EmptyObservable, ErrorObservable etc are also removed from v6, in favour of existing or new operators that perform the same operations. 
+
+For example, in v5 to create an ErrorObservable we might use one of the following
+new ErrorObservable('Your error message');
+OR
+ErrorObservable.create('Your error message');
+
+In v6, we use throwError() function to achieve this.
+return throwError('Your error message');
+
+How do I know, I have to use throwError() function instead of ErrorObservable class. Well, the following GitHub article contains all the differences between RxJS v5.x and v6. A quick search (CTRL + F) on the page for ErrorObservable shows, it has been removed in favour of throwError() function.
+https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md
+
+in v6, import throwError function from rxjs. Since ErrorObservable class is replaced by throwError function, we import it the same way we import other classes like Observable and Subject from rxjs.
+import { Observable, throwError } from 'rxjs';
+
+
+ Implementing EDIT operation in a reactive form.
+ ===============================================
+ https://csharp-video-tutorials.blogspot.com/2018/11/angular-reactive-forms-edit-example.html
+ 
+ 
+ how to populate angular formarray with existing data. 
+ ======================================================
+ https://csharp-video-tutorials.blogspot.com/2018/11/angular-populate-formarray.html
