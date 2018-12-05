@@ -53,4 +53,4 @@ Run Command Prompt as an administrator and execute the following command.
     **npm install -g @angular/cli@6.1.1**
 
   
-![note: If you see a tree structure as shown below, you have Angular CLI installed successfully.](Angular CLI/images/successfull installation pic.png)
+![note: If you see a tree structure as shown below, you have Angular CLI installed successfully.](https://github.com/deepakkum21/AngularCrudWithMicroservices/tree/master/Angular%20CLI/images)
