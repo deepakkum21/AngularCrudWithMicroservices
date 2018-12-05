@@ -179,16 +179,40 @@ The table below shows the purpose of each file/folder.
 | ----------------- | ------------- |    
 | package.json |	This file contains the packages to build and run our application. It contains two sets of packages, dependencies and devDependencies. The dependencies are essential for running the application. The devDependencies are only required to develop the application. These packages are installed into the node_modules folder by the Node Package Manager (npm), when npm install commaned is excuted. You can also add your own custom scripts here.
 "scripts" property in package.json file contains the useful npm commands. Notice we have "start": "ng serve". This means when we execute npm start it executes ng serve which builds and starts the server. In addition if you also want to launch the browser and open the application 
-CHANGE "start": "ng serve" TO "start": "ng serve --open" |  
+CHANGE **"start": "ng serve" TO "start": "ng serve --open"** 
+now when you will execute command **npm start** it will execute ng serve --open |  
 | node_modules |	The packages specified in package.json file are installed into this folder when we run npm install command |
 | e2e Folder |	Contains end-to-end tests and their configuration files. We will discuss end-to-end tests in our upcoming videos |
-| .angular-cli.json |	This is the Angular CLI configuration file. We discussed the use of this file in our previous video. |
+| .angular-cli.json => till V5 .angular.json  from V6 |	This is the Angular CLI configuration file. We discussed the use of this file in our previous video. |
 | .editorconfig |	Configuration file for Visual Studio Code. The settings in this file let you set certain code style guidelines. For example what indent_style do you want - spaces or tabs and what should be the indent size etc. You can share this editorconfig file with other developers to maintain consistent coding styles. To read more about editor configuration please visit http://editorconfig.org |
 | .gitignore |	This file is used to determine files and folders you don't want to check in to source control. For example one of the folders we do not want to check in to source control is /dist folder which is auto generated when we build the application. So this folder is listed in this file. So, all the files and folders listed in this file are ignored, when a change set is checked in to source control. |
 | karma.conf.js |	Karma is the unit test runner for angular applications. As the name implies, karma.conf.js is the configuration file for Karma. |
-| protractor.conf.js	Protractor is an end-to-end test framework for Angular applications. As the name implies, protractor.conf.js is the configuration file for Protractor. |
+| protractor.conf.js |	Protractor is an end-to-end test framework for Angular applications. As the name implies, protractor.conf.js is the configuration file for Protractor. |
 | README.md |	This is a README file which contains the commonly used Angular CLI commands out of the box. You may enhance it with your own project documentation so that anyone checking out the repo knows the commands to use to build, run and test your app. |
 | tsconfig.json |	This is the TypeScript compiler configuration file. This file has several TypeScript compiler configuration settings. For example, to compile TypeScript to JavaScript on saving a TypeScript file set compileOnSave setting to true. If you do not want .map files to be generated, set sourceMap to false. .map files are used for debugging your application. |
 | tslint.json |	Angular has a linting tool that checks our TypeScript code for programmatic and stylistic errors as well as non-adherence to coding standards and conventions. tslint.json is the configuration file for linting. |
+
+## Angular project/src folder structure
+![src folder structure]()
+The following table has "src" folder and it's contents. 
+
+| **File / Folder** |	**Purpose** |
+| ----------------- | ------------- |
+| src folder |	As the name implies, this folder contains all our angular project source code. Components, templates, pipes, services, images, styles etc that our angular application needs are present in this folder. The rest of the files and folders that are present outside this folder, are there to support building our angular application |
+| assets |	As the name implies, the assets folder contains the assets of your application like images and anything else to be copied when you build your application |
+| environments |	This folder contains the environment files. By default we have 2 environment files. environment.ts is for for development environment. Notice production property in this file is set to false. environment.prod.ts is for production. Notice in this file production property is set to true as expected. The build system defaults to the dev environment which uses `environment.ts`, but if we do a production build environment.prod.ts will be used. The file and environment mapping is in Angular CLI configuration file (.angular-cli.json) |
+| favicon.ico |	This is the favorite icon for your application which is typically displayed in the browser address bar and next to the page name in a list of bookmarks. Angular CLI provides this favorite icon out of the box. You may replace this favicon with your own company favicon |
+| index.html |	The main HTML page that is served when someone visits your site |
+| main.ts |	The main entry point for the application. This file contains the code to bootstrap the application root module (AppModule) |
+| polyfills.ts |	This is the polyfills file. Angular is built on the latest standards of the web platform. Targeting such a wide range of browsers is challenging because not all browsers support all features of modern browsers. This can be compensated by using polyfill scripts as they implement the missing features in JavaScript. So these polyfills allow us to use an API regardless of whether it is supported by a browser or not |
+| styles.css |	This file contains the global styles of our application. Styles that are local and specific to a component are often defined with in the component itself for easier maintenance |
+| test.ts |	This file is the main entry point for unit tests and loads all the .spec and framework files |
+| tsconfig.app.json |	TypeScript compiler configuration for the Angular app |
+| tsconfig.spec.json |	TypeScript compiler configuration for the unit tests |
+| typings.d.ts |	This is the TypeScript typings file. Many JavaScript libraries, such as jQuery, Angular etc extend the JavaScript environment with features and syntax that the TypeScript compiler doesn't recognize natively. When the typeScript compiler doesn't recognize something, it throws an error. So, we use TypeScript type definition files to tell the compiler about those libraries. These TypeScript type definition files have the extension d.ts. TypeScript editors leverage these type definition files to display type information  
+Many libraries include type definition files in their npm packages. Angular is one such library. For example, if you look inside node_modules/@angular/core/ folder in an Angular application, it already contains the type definition files. All the files that have the extenstion d.ts are the type definition files. |
+| app.component. 
+{ts,html,css,spec.ts} |	The root component (AppComponent) TypeScript, HTML template, StyleSheet and Spec files |
+| app.module.ts |	This is the root application module (AppModule) |
 
 
