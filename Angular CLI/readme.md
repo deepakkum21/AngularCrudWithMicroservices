@@ -119,7 +119,7 @@ ng --help >MyWordDoc.doc
 
 
 ## some of the common options that we can use with ng new command. 
-The table below shows the common options, their data types, default values, alias and a short description of what they do. 
+The table below shows the common options, their data types, default values, alias and a short description of what they do.    
 
 | **Flag** |	**Type** |	**Default** |	**Alias** |	**Purpose** |
 | -------- | ----------- | ------------ | ----------- | ----------- |
@@ -171,8 +171,9 @@ The table below shows the common options, their data types, default values, alia
 
 
 ## Angular project structure
-![project structure](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20create%20new%20project.png)
-The table below shows the purpose of each file/folder. 
+![project structure](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20create%20new%20project.png)   
+
+The table below shows the purpose of each file/folder.     
 | **File / Folder** |	**Purpose** |
 | ----------------- | ------------- |
 | package.json |	This file contains the packages to build and run our application. It contains two sets of packages, dependencies and devDependencies. The dependencies are essential for running the application. The devDependencies are only required to develop the application. These packages are installed into the node_modules folder by the Node Package Manager (npm), when npm install commaned is excuted. You can also add your own custom scripts here. 
