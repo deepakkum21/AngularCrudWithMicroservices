@@ -57,7 +57,7 @@ Run Command Prompt as an administrator and execute the following command.
 
 #### To verify the version of Angular CLI installed
 **ng -v**
-![]()
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20cli%20verify.png)
 
 #### If problems installing Angular CLI
 1. Delete "npm" folder from the following path C:\Users\Your_UserName\AppData\Roaming 
@@ -67,3 +67,65 @@ Run Command Prompt as an administrator and execute the following command.
 https://nodejs.org/en/download/ 
 4. Run Command Prompt as an Administrator and try to install Angular CLI again using the following command **npm install -g @angular/cli**
 
+
+## To create a new Angular Project
+- open Command Prompt as an Administrator and execute the following command. 
+The below command will perform following task:-
+- creates all the required files
+- also installs all the required packages
+**c:\>ng new MyFirstApp**
+- ng is the Angular CLI
+- new for creating a new application
+- MyFirstApp is the name of your angular application
+
+#### So what did this "ng new" command do
+- A new folder with name MyFirstApp is created
+- All the required configuration and source files are created.
+- All the npm dependencies are installed in node_modules folder
+- Unit and end-to-end tests are created
+- The Karma unit test runner is configured
+- The Protractor end-to-end test framework is configured
+
+Now, go to the folder (MyFirstApp) that contains our angular project, by executing the following command. cd stands for change directory
+cd MyFirstApp
+
+![At this point in Visual Studio Code you will see all the Angular project files. node_modules folder, that conatins all the installed packages]
+()
+#### To run the project using Angular CLI
+**ng serve --open**
+the above Command will do following things:-
+- builds the application and opens it in our default browser
+- The flag --open, launches our default browser and runs the application
+- By default the application runs on port 4200
+
+#### To Stop the Server
+press CTRL + C while you are on the command prompt and then "Y" and ENTER key.
+
+#### To run all the unit tests, use the following command
+**ng test**
+
+#### To run all the end-to-end tests, use the following command
+**ng e2e**
+
+## how to customise command prompt window
+1. To find help  
+ng --help. or ng command_name --help  
+2. To redirect the output of ng --help command to the windows clipboard, use the CLIP command as shown below.  
+ng --help | clip  
+Once you have the output copied in the clipboard you can paste it anywhere you want it. For example in a notepad, word document etc.
+3. can also redirect the output directly to a text document using the following command. This command creates a text document with name MyTextDoc.txt  in the folder where you have executed the command. This text documents will have the output of the command ng --help.  
+ng --help >MyTextDoc.txt
+4. Similarly you can also redirect the output to a word document.   
+ng --help >MyWordDoc.doc
+
+
+## some of the common options that we can use with ng new command. 
+The table below shows the common options, their data types, default values, alias and a short description of what they do. 
+
+| **Flag** |	**Type** |	**Default** |	**Alias** |	**Purpose** |
+| -------- | ----------- | ------------ | ----------- | ----------- |
+| --dry-run |	Boolean	false |	-d	Run through without making any changes. Just reports the files that will be created |
+| --skip-install |	Boolean	false |	-si	Skip installing packages |
+| --skip-tests |	Boolean	false |	-st	Skip creating tests |
+| --inline-style |	Boolean	false |	-is	Use inline styles when generating the new application |
+| --inline-template |	Boolean	false |	-it	Use inline templates when generating the new project |
