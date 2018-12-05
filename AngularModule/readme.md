@@ -16,6 +16,7 @@ To group the components, directives, pipes and services related to a specific fe
 
 ### Various Angular Modules
 In addition to **feature modules**, an Angular application also contains the following modules.  
+
 | **Module Type** |	**Description** |  
 | ------------- | --------------- |  
 | Root Module |	Every Angular application has at least one module, the root module. By default, this root application module is called AppModule. We bootstrap this root module to launch the application. If the application that you are building is a simple application with a few components, then all you need is the root module. As the application starts to grow and become complex, in addition to the root module, we may add several feature modules. We then import these feature modules into the root module. We will discuss creating feature modules in our upcoming videos |
@@ -25,6 +26,7 @@ In addition to **feature modules**, an Angular application also contains the fol
 
 ### Advantages Of Angular Modules
 there are several benefits of splitting an angular application into multiple Angular Modules  
+
 | **Benefit** |	**Description** |   
 | ------------- | --------------- |  
 | Organizing Angular Application |	First of all, Modules are a great way to organise an angular application. Every feature area is present in it's own feature module. All Shared pieces (like components, directives & pipes) are present in a Shared module. All Singleton services are present in a core module. As we clearly know what is present in each module, it's easier to understand, find and change code if required |
