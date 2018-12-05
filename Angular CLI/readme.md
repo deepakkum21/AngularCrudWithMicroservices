@@ -177,8 +177,7 @@ The table below shows the purpose of each file/folder.
 
 | **File / Folder** |	**Purpose** |    
 | ----------------- | ------------- |    
-| package.json |	This file contains the packages to build and run our application. It contains two sets of packages, dependencies and devDependencies. The dependencies are essential for running the application. The devDependencies are only required to develop the application. These packages are installed into the node_modules folder by the Node Package Manager (npm), when npm install commaned is excuted. You can also add your own custom scripts here. 
-
+| package.json |	This file contains the packages to build and run our application. It contains two sets of packages, dependencies and devDependencies. The dependencies are essential for running the application. The devDependencies are only required to develop the application. These packages are installed into the node_modules folder by the Node Package Manager (npm), when npm install commaned is excuted. You can also add your own custom scripts here.
 "scripts" property in package.json file contains the useful npm commands. Notice we have "start": "ng serve". This means when we execute npm start it executes ng serve which builds and starts the server. In addition if you also want to launch the browser and open the application 
 CHANGE "start": "ng serve" TO "start": "ng serve --open" |  
 | node_modules |	The packages specified in package.json file are installed into this folder when we run npm install command |
