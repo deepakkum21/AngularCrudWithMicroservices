@@ -345,9 +345,7 @@ Generating directives, pipes, routing guards and other angular features is very 
 2. Basically this warning is saying, *if 'no-use-before-declare' rule is enabled* we need to *use --type-check option with the ng lint command*  
 **ng lint --type-check**
 
-3. *'no-use-before-declare' rule is enabled out of the box* and **it disallows usage of variables before their declaration**.    
-
-![]()  
+3. *'no-use-before-declare' rule is enabled out of the box* and **it disallows usage of variables before their declaration**.   
 4. At this point, execute ng lint command again with --type-check option    
 *ERROR: C:/AngularProject/src/app/app.component.ts[12, 17]: variable 'message' used before declaration*
 *ERROR: C:/AngularProject/src/app/app.component.ts[13, 5]: Forbidden 'var' keyword, use 'let' or 'const' instead* 
@@ -374,6 +372,11 @@ note:-
 *note:-*
 - *Some of the linting errors support automatic fix*. To have these linting errors fixed automatically, *run ng lint command with the --fix option*.    
 **ng lint --fix**
+
+![]()
+![]()
+
+
 
 
 
