@@ -373,9 +373,12 @@ note:-
 - *Some of the linting errors support automatic fix*. To have these linting errors fixed automatically, *run ng lint command with the --fix option*.    
 **ng lint --fix**
 
-![]()
-![]()
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/lint%20--help.PNG)
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ts%20lint%20installation.PNG)
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ts%20lint%20removing%20error%20and%20disabling%20it.PNG)
 
+
+## How to display linting errors in Visual Studio Code 
 
 
 
