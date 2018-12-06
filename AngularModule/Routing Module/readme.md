@@ -29,9 +29,17 @@
 *Step 4* : Specify where you want the routed component view template to be displayed using the <router-outlet> directive  
 *Step 5* : Create a navigation menu and tie the configured routes with the menu using the routerLink directive. Optionally, use the routerLinkActive directive to style the current route that is active, so the user knows the page that he is on, in the application.   
 
-![]()     
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/how%20routing%20works.PNG)      
 
-## Implementing routing in a separate routing module.
+## Implementing routing in a separate routing module.   
+It is better to implement routing in a separate module and then import that routing module in the AppModule.  
+1. for separation of concerns.
+2. for maintainability.
+3. easier to find and change routing code if required.
+
+**Moving routing code into it's own module is easy and straight forward**  
+![]()
+![]()
 
 
 
