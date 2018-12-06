@@ -532,7 +532,8 @@ A Prod Build is both minified and uglified, where as a Dev Build is not.
 
 ![Ahead-of-Time (AOT) Compilation](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/Build%20Performance%20Technique-AOTCompilation.PNG)   
 
-***The following table summarises the differences between a development build and a production build***
+***The following table summarises the differences between a development build and a production build***     
+
 | Feature |	Development Build |	Production Build |   
 | ------- | ----------------- | ---------------- |   
 | Source Maps |	Yes |	No |   
@@ -541,6 +542,48 @@ A Prod Build is both minified and uglified, where as a Dev Build is not.
 | Uglification |	No |	Yes |   
 | Tree Shaking |	No |	Yes |   
 | AOT |	No |	Yes |   
+
+
+
+## Ahead-of-Time compilation(AOT) & Just-in-Time(JIT) compilation in Angular.   
+1. In Angular we have 2 models of compilation 
+    - **JIT - Just-in-Time Compilation :** JIT compilation as the name implies, compiles the application Just-in-Time in the browser at runtime.
+    - **AOT - Ahead-of-Time Compilation :** AOT compilation compiles the application at build time  
+2. By default, with the *development build we get JIT compilation*. This is how it works. 
+    - The *application code along with the angular compiler is downloaded by the browser*. 
+    - At run-time, *when a request is issued* to the application, the *JIT-compiler in the browser compiles the application code before it is executed*. **This means our user who made that first request has to wait for the application to compile first.**
+3. when we build our angular application, the following JavaScript bundles are generated. 
+    - Inline
+    - Main
+    - Polyfills
+    - Styles
+    - Vendor
+    - note:- The *vendor bundle contains the compiler along with the angular framework*. The *compiler code is roughly half of the Angular framework*.   
+4. There is a tool called **source-map-explorer** that we can use **to inspect the JavaScript bundles**. 
+    - This tool *analyzes the source map generated with the bundle and draws a map of all dependencies*. 
+    - To install this tool,
+        - **npm install source-map-explorer --save-dev** 
+5. Once the build is complete, you will have the JavaScript bundles along with the source map files. Now execute the following command. 
+    - **node_modules\.bin\source-map-explorer dist\vendor.bundle.js**
+
+    ![jit compiler]()
+
+6. With **AOT compilation the angular application is pre-compiled**.
+    - So this *means the browser loads executable code* so it can *render the application immediately*, *without waiting to compile the application first*.  
+    - This also mean with AOT, as the application is already pre-compiled, there is also **no need for the browser to download the Angular compiler**.  
+    - **By default, the production build is Ahead-of-Time compiled** 
+    - So there is *no need to bundle up the angular compiler code in the vendor bundle*. This *brings down the vendor bundle size by almost 50%*. 
+    - In addition it is also minified, uglified and tree-shaked to remove any code that we are not referencing in our application. So the bundler size is further reduced. 
+7.  If want to inspect prod javascript bundles, but Without the sourcemap we will not be able to use the source-map-explorer tool.
+    - **ng build --prod --sourcemap true**
+    - **node_modules\.bin\source-map-explorer dist\vendor.7e385ef294695236ffd1.bundle.js**
+
+    ![aot compiler]()  
+
+8. The ***AOT compiler also detects and reports template binding errors at build time itself***. 
+9. To get jit or aot use folowing commands:
+![jit or aot compier]()
+
 
 
 
