@@ -270,6 +270,27 @@ To create a component without a folder, use --flat option with the ng generate c
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20service%20through%20cli.PNG)    
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20service%20through%20cli%20with%20options.PNG)
 
+## Generating Modules using the Angular CLI   
+
+1. To generate a module use    
+**ng generate module moduleName** OR **ng g m moduleName**      
+  by default it wouldn't create .spec.ts file and will create a dedicated folder for the module with module name
+
+2. To generate a students module with dry run option we could use   
+**ng generate module students -d** OR **ng g m students -d**   
+
+3. The following command *not only generates students module, it also imports it into the root module (AppModule)*    
+**ng g m students -d -m=app.module**    
+
+4. If you also want a spec file to be generated use the --spec option  
+**ng g m students -d -m=app.module --spec=true**    
+
+5. If you *do not want a dedicated folder for the module you are generating, use --flat option*.   
+**ng g m students -m=app.module --spec=true --flat=true**    
+
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20modules%20using%20cli.PNG)      
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20modules%20using%20cli%20with%20options.PNG)    
+
 
 
 
