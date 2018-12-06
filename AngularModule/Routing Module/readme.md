@@ -44,8 +44,8 @@ It is better to implement routing in a separate module and then import that rout
 ![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/moving%20routing%20to%20dep%20module%20-step3.PNG)  
 
 
-**here are the steps to implement routing in a separate module. Quick recap**  
-![]()
+### here are the steps to implement routing in a separate module. Quick recap
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/quick%20recap%20for%20routing%20in%20separate%20module.PNG)
 
 
 ## To make Angular CLI generate a routing module  

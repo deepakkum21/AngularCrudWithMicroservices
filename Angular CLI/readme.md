@@ -382,6 +382,14 @@ note:-
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ts%20lint%20removing%20error%20and%20disabling%20it.PNG)
 
 
+## Routing Module (What , How to create, Separation from code, Generating by CLI):   
+[https://github.com/deepakkum21/Angular/tree/master/AngularModule/Routing%20Module]    
+
+
+
+
+
+
 
 
 
