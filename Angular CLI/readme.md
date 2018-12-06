@@ -443,7 +443,8 @@ note:-
 **ng serve --help** 
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20serve%20--help.PNG)
 
-https://github.com/angular/angular-cli/wiki/serve
+https://github.com/angular/angular-cli/wiki/serve              
+
 https://angular.io/cli/serve
 
 The following table shows the common options, alias, default value & their purpose   
@@ -466,9 +467,9 @@ The following table shows the common options, alias, default value & their purpo
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20Vs%20ng%20serve.PNG)     
 
  - ***ng build --dev***  or ***ng build***   
-  -  it creates a folder with name "dist" and copies all the build files into that folder 
+    -  it creates a folder with name "dist" and copies all the build files into that folder 
         *Why dist folder*  :- becouse in angular.json file has configured with the property *"outDir" : "dist"*
-  - does a development build, which is not optimised but prod build is.
+    - does a development build, which is not optimised but prod build is.
   ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20--dev%20or%20ng%20build.PNG)
 
 - ***ng build --prod***
@@ -477,10 +478,10 @@ The following table shows the common options, alias, default value & their purpo
  - The *sizes of the bundles that the production build produces will be significantly less* than the sizes of the bundles that a dev build produces.
  ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20--prod.PNG)  
 
-3. **Difference in --dev build and --prod buid**
- 1. *the file sizes* in the production build are significantly less than the file sizes in the development build.
- 2. With the production build, *by default, we do not get the source map files* because we usually do not need them on a production server but if want can get with options.
- 3. *Production build extracts css from global styles into a css file* instead of js ones.  
+3. **Difference in --dev build and --prod buid**  
+    1. *the file sizes* in the production build are significantly less than the file sizes in the development build.
+    2. With the production build, *by default, we do not get the source map files* because we usually do not need them on a production server but if want can get with options.
+    3. *Production build extracts css from global styles into a css file* instead of js ones.  
 
 
 ### Difference between ng serve and ng build
