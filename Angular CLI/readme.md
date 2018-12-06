@@ -424,6 +424,83 @@ note:-
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/size%20of%20generated%20bumdle%20-%20network%20tab.PNG)   
 
 
+### Optimisation techniques to improve performance:  
+1. Webpack Bundling
+2. Ahead-of-Time (AOT) Compilation
+3. Minification
+4. Uglification 
+5. TreeShaking  
+
+**Notes:  ng serve**
+1. Builds and serves the application from memory for a faster development experience.
+2. It does not write the build artefacts to the disk, so we cannot use this command if you want to deploy the build to another server. 
+3. *For example*, if you want **to deploy your angular application to a test server for testing, or to your production server we cannot use ng serve**
+4. **ng build**. This command *writes the build artefacts to the specified output folder, so the application can be deployed elsewhere. *  
+
+
+## ng serve
+1. To see the list of all options that we can use with "ng serve" command use --help option
+**ng serve --help** 
+https://github.com/angular/angular-cli/wiki/serve
+https://angular.io/cli/serve
+
+The following table shows the common options, alias, default value & their purpose   
+
+| **Option** |	**Alia** |	**Default** |	**Purpose** |     
+| ---------- | --------- | ------------ | ------------- |   
+| --watch |	-w |	true |	Run build when files change |   
+| --live-reload |	-lr |	true |	Whether to reload the page on change |   
+| --open |	-o	false |	Opens the url in default browser |   
+| --port |	-p	4200 |	The port on which the server is listening |   
+| --extract-css |	-ec |	 |	Extract css from global styles onto css files instead of js ones |   
+
+
+## Compiling angular applications. 
+1. **ng serve** 
+ - This command builds and serves the application from memory for faster development experience.
+ - does not write the build files to the disk, so we cannot use it for deploying our application on a different server
+
+2. **ng build**
+![]()     
+
+ - ***ng build --dev***  or ***ng build***   
+  -  it creates a folder with name "dist" and copies all the build files into that folder 
+        *Why dist folder*  :- becouse in angular.json file has configured with the property *"outDir" : "dist"*
+  - does a development build, which is not optimised but prod build is.
+  ![]()
+
+- ***ng build --prod***
+ - This build will *have all the performance optimisation techniques* like Ahead-of-time (AOT) compilation, minification, uglification and treeshaking implemented .
+ - it creates a folder with name "dist" and copies all the build files into that folder but with optimized techniques implemented. 
+ - The *sizes of the bundles that the production build produces will be significantly less* than the sizes of the bundles that a dev build produces.
+ ![]()  
+
+3. **Difference in --dev build and --prod buid**
+ 1. *the file sizes* in the production build are significantly less than the file sizes in the development build.
+ 2. With the production build, *by default, we do not get the source map files* because we usually do not need them on a production server but if want can get with options.
+ 3. *Production build extracts css from global styles into a css file* instead of js ones.  
+
+
+### Difference between ng serve and ng build
+1. **ng serve**
+ - Compiles and serves the application from memory
+ - Does not write the build files to the disk
+ - Typically used to run the application on local development machine
+ - Cannot be used for deploying the build to another server (Ex. Testing, Staging or Production server)  
+
+2. **ng build** 
+ - Compiles the application to the "dist" folder
+ - Can be used to produce both development & production builds
+ - Typically used to deploy the application on another server  
+
+
+
+
+
+
+
+
+
 
 
 
