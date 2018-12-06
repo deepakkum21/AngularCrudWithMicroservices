@@ -328,6 +328,53 @@ Generating directives, pipes, routing guards and other angular features is very 
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20enum%2C%20interface.PNG)    
 
 
+## Linting TypeScript Code   
+*Linting is a tool that checks our TypeScript code for* :-
+- programmatic 
+- stylistic errors 
+- non-adherence to coding standards and conventions  
+
+**tslint.json** is the *configuration file for linting*. This file **contains all the default rules for linting our code**.   
+*command to lint the code* 
+**ng lint** 
+
+1. If new angular project and all the code in the project is auto-generated, we do not have any linting errors and we get the message    
+*- All files pass linting.*  
+**Warning: The 'no-use-before-declare' rule requires type checking**  
+
+2. Basically this warning is saying, *if 'no-use-before-declare' rule is enabled* we need to *use --type-check option with the ng lint command*  
+**ng lint --type-check**
+
+3. *'no-use-before-declare' rule is enabled out of the box* and **it disallows usage of variables before their declaration**.    
+
+![]()  
+4. At this point, execute ng lint command again with --type-check option    
+*ERROR: C:/AngularProject/src/app/app.component.ts[12, 17]: variable 'message' used before declaration*
+*ERROR: C:/AngularProject/src/app/app.component.ts[13, 5]: Forbidden 'var' keyword, use 'let' or 'const' instead* 
+
+5. if *no-var-keyword* is set to false then variable can be declared with var keyword.
+note:-  
+ - only var keyword variable can be accessed without declaring it        
+ - variable with let and const are not allowed with this kinf of strategy.    
+ - Variables declared with let keyword are not accessible before they are declared. So this rule 'no-use-before-declare' can be safely disabled, if you have 'no-var-keyword' rule enabled.  
+ - When 'no-use-before-declare' rule is disabled and when we run ng lint command without --type-check option, we will no longer get the below warning 
+*The 'no-use-before-declare' rule requires type checking*   
+
+| **Lint Rules** | **byDefault** | **Description** |    
+| -------------- | ------------- | --------------- |     
+| no-use-before-declare | true | i.e you cannot use any variable before declaring it.|
+| no-var-keyword | true | you cannot use var keyword . can only use const or let | 
+| quotemark | true for single | rule specifies whether you want single or double quotes for string |
+| no-trailing-whitespace | true |rule disallows trailing whitespace at the end of a line |
+| semicolon | true | rule specifies that a line should be terminated with a semicolon |
+| comment-format | true | rule specifies that all single-line comments must begin with a space |
+| component-class-suffix | true | rule enforces that a component class should end with the suffix Component |
+| use-life-cycle-interface | true | rule enforces that you add the implements keyword for every lifecycle hook you use  | 
+
+*note:-*
+- *Some of the linting errors support automatic fix*. To have these linting errors fixed automatically, *run ng lint command with the --fix option*.    
+**ng lint --fix**
+
 
 
 
