@@ -323,7 +323,11 @@ Generating directives, pipes, routing guards and other angular features is very 
 
 
 ## To generate a class, Interface, Enum :   
-![]()
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20enum%2C%20class%2C%20interface.PNG)   
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20class.PNG)   
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20enum%2C%20interface.PNG)    
+
+
 
 
 
