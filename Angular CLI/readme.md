@@ -386,6 +386,41 @@ note:-
 [https://github.com/deepakkum21/Angular/tree/master/AngularModule/Routing%20Module]    
 
 
+## Running angular app locally   
+### What happens when ng serve --open   
+**Angular CLI runs Webpack to build and bundle all JavaScript and CSS code**. The following are the bundles.   
+
+| **Bundle File** |	**What it contains** |  
+| --------------- | -------------------- |   
+| inline.bundle.js |	WebPack runtime. Required for WebPack to do it's job |  
+| main.bundle.js |	All our application code that we write |  
+| polyfills.bundle.js |	Browser Polyfills |  
+| styles.bundle.js |	Styles used by the application |  
+| vendor.bundle.js |	Angular and 3rd party vendor files |  
+
+
+### What is bundling and why is it important for performance??    
+1. A typical real world angular application is made up of many components. 
+ - Each component code is in it's own .ts file which gets transpiled to JavaScript i.e to a .js file. 
+ - Along the same lines, a component may also have it's own .css file for styles. 
+ - So our angular application code is in many small files. 
+ - In addition to our application code files, we also have vendor code files like Angular, jQuery etc.    
+
+ 2. Because of browser limitation, any application may suffer from performance perspective, if it has many JavaScript and CSS files to download.   
+
+ 3. *Bundling can solve this problem by combining many small application and library files into a few bundles*  
+
+ ### Various ways to see generated bundle files:-
+1. execute the **"ng serve --open"** command in a command prompt window, upon build completion you can see the generated bundles in the command prompt   
+![]()    
+
+2. When the application is served in the browser you can see the generated *bundles on the "Elements" tab in Browser Developer Tools*. 
+![]()    
+
+3. Also can see these bundles on the *"Sources" tab in Browser Developer Tools*.
+![]()   
+
+4. Can also *bundles along with their sizes click on the Network tab*. If you don't see the bundles, refresh the browser window by pressing F5. 
 
 
 
