@@ -37,10 +37,23 @@ It is better to implement routing in a separate module and then import that rout
 2. for maintainability.
 3. easier to find and change routing code if required.
 
-**Moving routing code into it's own module is easy and straight forward**  
+**Moving routing code into it's own module is easy and straight forward** 
+ 
 ![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/moving%20routing%20to%20dep%20module%20-step1%2C2.PNG)   
+*Step: 3*
 ![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/moving%20routing%20to%20dep%20module%20-step3.PNG)  
 
+
+**here are the steps to implement routing in a separate module. Quick recap**  
+![]()
+
+
+## To make Angular CLI generate a routing module  
+use *--routing* option along with the ng new command when *generating a new Angular project*.   
+**ng new ProjectName --routing**  
+
+**Note** 
+1. The above command will create a separate module for routing with all the configuration i.e. all above mentioned steps 1,2,3,5,6,7 but *except step 4 i.e. configuring the routes since it has routes where we want to route that has to be configured by user.*
 
 
 
