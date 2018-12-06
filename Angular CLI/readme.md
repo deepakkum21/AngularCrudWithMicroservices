@@ -566,7 +566,7 @@ A Prod Build is both minified and uglified, where as a Dev Build is not.
 5. Once the build is complete, you will have the JavaScript bundles along with the source map files. Now execute the following command. 
     - **node_modules\.bin\source-map-explorer dist\vendor.bundle.js**
 
-    ![jit compiler]()
+    ![jit compiler](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20jit%20compiler.png)
 
 6. With **AOT compilation the angular application is pre-compiled**.
     - So this *means the browser loads executable code* so it can *render the application immediately*, *without waiting to compile the application first*.  
@@ -578,11 +578,12 @@ A Prod Build is both minified and uglified, where as a Dev Build is not.
     - **ng build --prod --sourcemap true**
     - **node_modules\.bin\source-map-explorer dist\vendor.7e385ef294695236ffd1.bundle.js**
 
-    ![aot compiler]()  
+    ![aot compiler](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/angular%20aot%20compiler.png)  
 
 8. The ***AOT compiler also detects and reports template binding errors at build time itself***. 
-9. To get jit or aot use folowing commands:
-![jit or aot compier]()
+9. To get jit or aot use folowing commands:       
+
+![jit or aot compier](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/jit%20or%20aot%20compiler%20to%20be%20used.PNG)
 
 
 
