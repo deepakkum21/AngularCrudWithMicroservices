@@ -289,7 +289,35 @@ To create a component without a folder, use --flat option with the ng generate c
 **ng g m students -m=app.module --spec=true --flat=true**    
 
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20modules%20using%20cli.PNG)      
-![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20modules%20using%20cli%20with%20options.PNG)    
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20modules%20using%20cli%20with%20options.PNG)  
+
+
+## Generating directives, pipes and routing guards using the Angular CLI.   
+Generating directives, pipes, routing guards and other angular features is very similar to generating component and services.     
+
+| **Angular Feature** |	**Complete Command** |	**Alias** |   
+| ------------------- | -------------------- | ---------- |   
+| Directive |	ng generate directive directiveName |	ng g d directiveName |   
+| Pipe |	ng generate pipe pipeName |	ng g p pipeName |   
+| Routing Guard |	ng generate guard guardName |	ng g g guardName |  
+
+**Please note :** When you try to generate a directive, pipe or a component, and *if you have multiple modules in your angular project you may get the following error*   
+*More than one module matches. Use skip-import option to skip importing the component into the closest module*
+**Sol:-**   
+*The reason we are getting this error is we have more than one module in our angular project*, so Angular CLI does not know with which module the newly generated directive, pipe or component should be registered. So we have 2 options here.  
+1. Use --skip-import option to tell Angular CLI not to import and register the generated component, directive or pipe      
+**ng g d directiveName --skip-import -d**  
+2. Use --module option or it's alias -m to tell Angular CLI the module with which we want our newly generated component, directive or pipe should be registered.    
+**ng g d directiveName -m=app.module -d**    
+
+*When genearting certain angular features like services or routing guards*, you **will not get this error**, even when you have multiple modules in your project, **because by default, Angular CLI does not try to import and register these features**.   
+
+| **Option** |	**Purpose** |   
+| ---------- | ------------ |     
+| flat |	Specifies if a dedicated folder should be created |   
+| module |	Specifies the module with which the newly generated angular feature should be rigstered |   
+| spec |	Specifies if a spec file should be generated |   
+
 
 
 
