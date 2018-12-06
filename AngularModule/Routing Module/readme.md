@@ -38,8 +38,8 @@ It is better to implement routing in a separate module and then import that rout
 3. easier to find and change routing code if required.
 
 **Moving routing code into it's own module is easy and straight forward**  
-![]()
-![]()
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/moving%20routing%20to%20dep%20module%20-step1%2C2.PNG)   
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/moving%20routing%20to%20dep%20module%20-step3.PNG)  
 
 
 
