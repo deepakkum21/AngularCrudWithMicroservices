@@ -441,6 +441,8 @@ note:-
 ## ng serve
 1. To see the list of all options that we can use with "ng serve" command use --help option
 **ng serve --help** 
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20serve%20--help.PNG)
+
 https://github.com/angular/angular-cli/wiki/serve
 https://angular.io/cli/serve
 
@@ -450,8 +452,8 @@ The following table shows the common options, alias, default value & their purpo
 | ---------- | --------- | ------------ | ------------- |   
 | --watch |	-w |	true |	Run build when files change |   
 | --live-reload |	-lr |	true |	Whether to reload the page on change |   
-| --open |	-o	false |	Opens the url in default browser |   
-| --port |	-p	4200 |	The port on which the server is listening |   
+| --open |	-o |	false |	Opens the url in default browser |   
+| --port |	-p |	4200 |	The port on which the server is listening |   
 | --extract-css |	-ec |	 |	Extract css from global styles onto css files instead of js ones |   
 
 
@@ -461,19 +463,19 @@ The following table shows the common options, alias, default value & their purpo
  - does not write the build files to the disk, so we cannot use it for deploying our application on a different server
 
 2. **ng build**
-![]()     
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20Vs%20ng%20serve.PNG)     
 
  - ***ng build --dev***  or ***ng build***   
   -  it creates a folder with name "dist" and copies all the build files into that folder 
         *Why dist folder*  :- becouse in angular.json file has configured with the property *"outDir" : "dist"*
   - does a development build, which is not optimised but prod build is.
-  ![]()
+  ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20--dev%20or%20ng%20build.PNG)
 
 - ***ng build --prod***
  - This build will *have all the performance optimisation techniques* like Ahead-of-time (AOT) compilation, minification, uglification and treeshaking implemented .
  - it creates a folder with name "dist" and copies all the build files into that folder but with optimized techniques implemented. 
  - The *sizes of the bundles that the production build produces will be significantly less* than the sizes of the bundles that a dev build produces.
- ![]()  
+ ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20--prod.PNG)  
 
 3. **Difference in --dev build and --prod buid**
  1. *the file sizes* in the production build are significantly less than the file sizes in the development build.
