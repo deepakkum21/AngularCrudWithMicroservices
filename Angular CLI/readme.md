@@ -318,6 +318,16 @@ Generating directives, pipes, routing guards and other angular features is very 
 | module |	Specifies the module with which the newly generated angular feature should be rigstered |   
 | spec |	Specifies if a spec file should be generated |   
 
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20guard%2C%20pipe%2C%20directives%20using%20cli.PNG)    
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20guard%2C%20pipe%2C%20directives%20using%20cli%20with%20option.PNG)
+
+
+## To generate a class, Interface, Enum :   
+![]()
+
+
+
+
 
 
 
