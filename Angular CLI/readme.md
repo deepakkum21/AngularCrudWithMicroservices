@@ -255,16 +255,16 @@ To create a component without a folder, use --flat option with the ng generate c
 
 ## Generating services using the Angular CLI
 
-1. To generate a service
+1. To generate a service   
 **ng generate service serviceName OR ng g s serviceName**  
 
-2. To *not only generates employee service, it also registers our service witht the AppModule*
-**ng generate service employee -module=app.module**  
+2. To *not only generates employee service, it also registers our service witht the AppModule*   
+**ng generate service employee -module=app.module**   
 
-3. If you do not want the spec file, simply set *--spec=false *
+3. If you do not want the spec file, simply set *--spec=false *   
 **ng g s student -d --spec=false**
 
-4. If you want a folder of it's own for a service that the Angular CLI is generating, *set --flat* option to false 
+4. If you want a folder of it's own for a service that the Angular CLI is generating, *set --flat* option to false     
 **ng g s student -d --spec=false --flat=false**
 
 ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/generating%20service%20through%20cli.PNG)    
