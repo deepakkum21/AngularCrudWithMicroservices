@@ -512,7 +512,7 @@ Development build generate Source Maps where as production build does not.
     - If want prod buid to generate source map set -sm option to true  
     ***ng build --prod -sm true*** 
 
-    ![source map]()
+    ![source map](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/Build%20-SourceMap.PNG)
 
 **Extracts CSS :** 
 1. With the **development build global styles are extracted to .js file**s where as with the **production build they are extracted to .css files.** To change this default behaviour *use --extract-css option or it's alias -ec* with the ng build command. 
@@ -520,16 +520,17 @@ Development build generate Source Maps where as production build does not.
 **ng build --dev -ec true**   
 
 **Minification & Uglification** 
-A Prod Build is both minified and uglified, where as a Dev Build is not. 
-![Minification & Uglification]()  
+A Prod Build is both minified and uglified, where as a Dev Build is not.
+           
+![Minification & Uglification](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/Build%20Performance%20Technique-Minification%26Uglification.PNG)  
 
 **Tree Shaking :**    
 
-![Tree Shaking]()    
+![Tree Shaking](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/Build%20Performance%20Technique-TreeShaking.PNG)    
 
 **Ahead-of-Time (AOT) Compilation**   
 
-![Ahead-of-Time (AOT) Compilation]()   
+![Ahead-of-Time (AOT) Compilation](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/Build%20Performance%20Technique-AOTCompilation.PNG)   
 
 ***The following table summarises the differences between a development build and a production build***
 | Feature |	Development Build |	Production Build |   
