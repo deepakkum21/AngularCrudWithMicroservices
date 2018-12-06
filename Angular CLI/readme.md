@@ -583,7 +583,11 @@ A Prod Build is both minified and uglified, where as a Dev Build is not.
 8. The ***AOT compiler also detects and reports template binding errors at build time itself***. 
 9. To get jit or aot use folowing commands:       
 
-![jit or aot compier](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/jit%20or%20aot%20compiler%20to%20be%20used.PNG)
+![jit or aot compier](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/jit%20or%20aot%20compiler%20to%20be%20used.PNG)  
+
+
+## Deploying angular application to IIS.
+ 
 
 
 
