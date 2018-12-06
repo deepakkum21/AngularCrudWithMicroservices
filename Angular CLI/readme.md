@@ -412,15 +412,18 @@ note:-
 
  ### Various ways to see generated bundle files:-
 1. execute the **"ng serve --open"** command in a command prompt window, upon build completion you can see the generated bundles in the command prompt   
-![]()    
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/webpack%20generating%20various%20files.PNG)    
 
 2. When the application is served in the browser you can see the generated *bundles on the "Elements" tab in Browser Developer Tools*. 
-![]()    
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/element%20tab%20to%20see%20generated%20bundles.PNG)    
 
 3. Also can see these bundles on the *"Sources" tab in Browser Developer Tools*.
-![]()   
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/source%20tab%20to%20see%20generated%20bundles.PNG)     
 
 4. Can also *bundles along with their sizes click on the Network tab*. If you don't see the bundles, refresh the browser window by pressing F5. 
+![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/size%20of%20generated%20bumdle%20-%20network%20tab.PNG)   
+
+
 
 
 
