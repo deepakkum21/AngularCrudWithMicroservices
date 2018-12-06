@@ -473,9 +473,10 @@ The following table shows the common options, alias, default value & their purpo
   ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20--dev%20or%20ng%20build.PNG)
 
 - ***ng build --prod***
- - This build will *have all the performance optimisation techniques* like Ahead-of-time (AOT) compilation, minification, uglification and treeshaking implemented .
- - it creates a folder with name "dist" and copies all the build files into that folder but with optimized techniques implemented. 
- - The *sizes of the bundles that the production build produces will be significantly less* than the sizes of the bundles that a dev build produces.
+    - This build will *have all the performance optimisation techniques* like Ahead-of-time (AOT) compilation, minification, uglification and treeshaking implemented .
+    - it creates a folder with name "dist" and copies all the build files into that folder but with optimized techniques implemented. 
+    - The *sizes of the bundles that the production build produces will be significantly less* than the sizes of the bundles that a dev build produces.    
+
  ![](https://github.com/deepakkum21/Angular/blob/master/Angular%20CLI/images/ng%20build%20--prod.PNG)  
 
 3. **Difference in --dev build and --prod buid**  
@@ -494,7 +495,52 @@ The following table shows the common options, alias, default value & their purpo
 2. **ng build** 
  - Compiles the application to the "dist" folder
  - Can be used to produce both development & production builds
- - Typically used to deploy the application on another server  
+ - Typically used to deploy the application on another server 
+
+
+**Source Maps :**
+Development build generate Source Maps where as production build does not.   
+1. *What are Source Maps*   
+    - To improve the performance, the application's JavaScript and CSS files are combined and compressed. 
+    - It is extremely difficult to debug those compressed files. 
+    - A source map holds information about the original files and can be used to map the code within a compressed file back to it’s original position in a source file. 
+    - So with the help of these source maps we can easily debug our applications even after the the files are compressed and combined.
+    - By default dev buid has source map  where as prod build doesn't
+    - can manually change this behavior by using **--sourcemaps** or **-sm** with *ng build*
+    - For dev build not to generate source map set -sm option to false     
+    ***ng build --dev -sm false***
+    - If want prod buid to generate source map set -sm option to true  
+    ***ng build --prod -sm true*** 
+
+    ![source map]()
+
+**Extracts CSS :** 
+1. With the **development build global styles are extracted to .js file**s where as with the **production build they are extracted to .css files.** To change this default behaviour *use --extract-css option or it's alias -ec* with the ng build command. 
+2. If want development build with global styles extracted to .css file(s) instead of .js ones.       
+**ng build --dev -ec true**   
+
+**Minification & Uglification** 
+A Prod Build is both minified and uglified, where as a Dev Build is not. 
+![Minification & Uglification]()  
+
+**Tree Shaking :**    
+
+![Tree Shaking]()    
+
+**Ahead-of-Time (AOT) Compilation**   
+
+![Ahead-of-Time (AOT) Compilation]()   
+
+***The following table summarises the differences between a development build and a production build***
+| Feature |	Development Build |	Production Build |   
+| ------- | ----------------- | ---------------- |   
+| Source Maps |	Yes |	No |   
+| Extracts CSS |	.js file |	.css file |   
+| Minifaction |	No |	Yes |   
+| Uglification |	No |	Yes |   
+| Tree Shaking |	No |	Yes |   
+| AOT |	No |	Yes |   
+
 
 
 
