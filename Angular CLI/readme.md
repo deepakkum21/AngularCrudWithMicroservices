@@ -1,3 +1,4 @@
+# Angular CLI
 ## why should we use Angular CLI?
 1. manually setting up an Angular application from scratch is a laborious and time consuming process. We have to
     - Create a separate application folder and add the package definition file **( ie. package.json)** and other configuration files.
