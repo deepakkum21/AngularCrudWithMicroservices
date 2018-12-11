@@ -57,7 +57,12 @@ Command to create a module with making it import in another module:
 ![ex4](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg4.PNG)                                                              
 ![ex5](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg5.PNG)                                
 
-## Creating a separate routing module for a feature module.
+## Creating a separate routing module for a feature module.                                                   
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/routing-separation-employee-routing.PNG)
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/routing-separation-employee-routing1.PNG)
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/routing-separation-employee-routing3%2C4.PNG)
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/routing-separation-employee-routing5.PNG)
+![](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/setting%20routing%20manually-Step5.PNG)
 
 
 
