@@ -44,4 +44,18 @@ Angular module is a class that is decorated with **@NgModule decorator**. The @N
 - exports
 
 
-## Creating a feature module in Angular
+## Creating a feature module in Angular:
+Command to create a module with making it import in another module:         
+**ng g m employee/employee --flat -m app**     
+1. Creates the EmployeeModule in a file with name employee.module.ts. 
+2. Imports EmployeeModule into the root module - AppModule.
+
+**Let's understand this with an example**                                                               
+![ex1](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg1.PNG)                          
+![ex2](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg2.PNG)                                                              
+![ex3](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg3.PNG)                          
+![ex4](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg4.PNG)                                                              
+![ex5](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg5.PNG)                          
+
+
+
