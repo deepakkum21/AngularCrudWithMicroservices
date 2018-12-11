@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListEmployeesComponent } from './list-employees/list-employees.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 
-const appRoutes: Routes = [
+const employeeRoutes: Routes = [
   {
     path: 'list',
     component: ListEmployeesComponent
@@ -20,7 +20,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(appRoutes)
+    RouterModule.forChild(employeeRoutes)
   ],
   exports: [RouterModule],
   declarations: []
