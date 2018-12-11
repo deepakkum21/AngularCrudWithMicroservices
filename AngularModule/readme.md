@@ -55,7 +55,20 @@ Command to create a module with making it import in another module:
 ![ex2](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg2.PNG)                                                              
 ![ex3](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg3.PNG)                          
 ![ex4](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg4.PNG)                                                              
-![ex5](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg5.PNG)                          
+![ex5](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/feature-module-eg5.PNG)                                
+
+## Creating a separate routing module for a feature module.
+
+
+
+## RouterModule forRoot vs forChild  
+1. *forRoot()* method **registers the specified routes**. It also **creates an instance of the Router service** and registers it with the angular's dependency injector.
+
+2. *forChild()* method on the other hand **only registers the additional specified routes** and tells angular **to reuse the Router service instance that forRoot has created.**
+
+3. **Angular services are singletons**. So, to ensure that, there is **only one instance of Router service, forRoot() method should be called only once** in the main application routing module. 
+
+4. In all the feature routing modules **forChild() method should be used to register the additional routes**. When the **forChild() method is called, Angular Router knows it has to only register the additional specified routes and not to re-register the Angular Router service**.
 
 
 
