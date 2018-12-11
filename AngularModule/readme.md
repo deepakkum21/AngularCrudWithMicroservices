@@ -42,3 +42,6 @@ Angular module is a class that is decorated with **@NgModule decorator**. The @N
 - providers
 - imports
 - exports
+
+
+## Creating a feature module in Angular

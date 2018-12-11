@@ -17,9 +17,9 @@ import { EmployeeModule } from './Employee/employee.module';
   ],
   imports: [
     BrowserModule,
+    EmployeeModule,
     AppRoutingModule,
-    HttpClientModule,
-    EmployeeModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
