@@ -91,7 +91,12 @@ Command to create a module with making it import in another module:
 1. **lazy loading angular module**
     - All the routes in an angular module that you want to **lazy load should have the same route prefix.**
 2. **componentless-route** with same route prefix for lazy load
-    - ![component-less route]()
+    - ![component-less route](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/componentless-route.PNG)
+    - now we have a parent route with path employees
+    - The parent 'employees' route has 3 child routes
+    - All the 3 child routes will be pre-fixed with the parent route path - employees
+    - now the parent route(employees) does not have a component associated with it. That is why this route is called a component less route.
+    - Update the routes in the navigation menu
 
 
 

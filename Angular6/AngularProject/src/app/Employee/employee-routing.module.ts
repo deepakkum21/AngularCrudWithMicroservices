@@ -5,16 +5,21 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
 
 const employeeRoutes: Routes = [
   {
-    path: 'list',
-    component: ListEmployeesComponent
-  },
-  {
-    path: 'create',
-    component: CreateEmployeeComponent
-  },
-  {
-    path: 'edit/:id',
-    component: CreateEmployeeComponent
+    path: 'employees',
+    children: [
+      {
+        path: '',
+        component: ListEmployeesComponent
+      },
+      {
+        path: 'create',
+        component: CreateEmployeeComponent
+      },
+      {
+        path: 'edit/:id',
+        component: CreateEmployeeComponent
+      }
+    ]
   }
 ];
 
