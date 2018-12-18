@@ -87,5 +87,11 @@ Command to create a module with making it import in another module:
     - **ng g m shared/shared --flat -m employee/employee** 
     - In EmployeeModule (employee.module.ts), remove CommonModule and ReactiveFormsModule references as these modules are now provided by the imported SharedModule.
 
+## Grouping routes and creating component less route in angular
+1. **lazy loading angular module**
+    - All the routes in an angular module that you want to **lazy load should have the same route prefix.**
+2. **componentless-route** with same route prefix for lazy load
+    - ![component-less route]()
+
 
 
