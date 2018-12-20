@@ -14,6 +14,11 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'employees',
+    loadChildren: './Employee/employee.module#EmployeeModule'
+  },
+  // wild card (**) route should be always at last
+  {
     path: '**',
     component: PageNotFoundComponent
   }

@@ -4,6 +4,25 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 
 const employeeRoutes: Routes = [
+
+  {
+    path: '',
+    component: ListEmployeesComponent
+  },
+  {
+    path: 'create',
+    component: CreateEmployeeComponent
+  },
+  {
+    path: 'edit/:id',
+    component: CreateEmployeeComponent
+  }
+
+];
+
+// for making a route prefixed with ame route
+/*
+const employeeRoutes: Routes = [
   {
     path: 'employees',
     children: [
@@ -21,7 +40,7 @@ const employeeRoutes: Routes = [
       }
     ]
   }
-];
+];  */
 
 @NgModule({
   imports: [

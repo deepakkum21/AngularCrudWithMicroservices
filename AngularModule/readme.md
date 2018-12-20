@@ -98,5 +98,28 @@ Command to create a module with making it import in another module:
     - now the parent route(employees) does not have a component associated with it. That is why this route is called a component less route.
     - Update the routes in the navigation menu
 
+## lazy loading angular modules                                                                                          
+(https://csharp-video-tutorials.blogspot.com/2018/12/lazy-loading-in-angular.html)
+- At some point one can reach a tipping point where the application takes a very long time to load.
+- Unless, lazy loading is not used, all the modules are eagerly loaded.
+- **Eagerly loaded**
+    - This means, all the modules in the angular application and their associated components, directives, pipes and services must be downloaded from the server, when the user first visits the application. 
+    - Depending on the number of modules in your application and the internet speed, this could take a significant amount of time and may very badly affect the end user experience.
+- **asynchronous routing or lazy loading**
+    - loads feature modules lazily, on demand.
+    - This can significantly reduce the initial load time of your application. 
+- **requirements for lazy loading**
+    - All the routes in the angular module that you want to lazy load **should have the same route prefix**.
+    - The **module should not be referenced in any other module**. If it is referenced, the module loader will eagerly load it instead of lazily loading it.
+- **implementation**
+    - All our EmployeeModule routes have the same route prefix i.e employees.
+    - At the moment, our application does not meet the second requirement.
+    - To achieve this, include the following route in app-routing.module.ts file. 
+    - This new route, lazily loads the EmployeeModule. 
+    - Make sure the below route is before the wild card route in the AppRoutingModule. Otherwise we would not be able to get to any of the EmployeeModule routes.
+    - **{ path: 'employees', loadChildren: './employee/employee.module#EmployeeModule' }**
+        - loadchildren has two parts:- module_path followed by # and then moduleclassname
+    
+
 
 

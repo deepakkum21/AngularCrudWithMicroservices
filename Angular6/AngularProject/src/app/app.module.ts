@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AppRoutingModule } from './/app-routing.module';
-import { EmployeeModule } from './Employee/employee.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,8 @@ import { EmployeeModule } from './Employee/employee.module';
   ],
   imports: [
     BrowserModule,
-    EmployeeModule,
+    // removing EmployeeModule to make lazy load possible
+    // EmployeeModule,
     AppRoutingModule,
     HttpClientModule
   ],
