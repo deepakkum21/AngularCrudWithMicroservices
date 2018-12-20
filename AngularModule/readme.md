@@ -118,7 +118,8 @@ Command to create a module with making it import in another module:
     - This new route, lazily loads the EmployeeModule. 
     - Make sure the below route is before the wild card route in the AppRoutingModule. Otherwise we would not be able to get to any of the EmployeeModule routes.
     - **{ path: 'employees', loadChildren: './employee/employee.module#EmployeeModule' }**
-        - loadchildren has two parts:- module_path followed by # and then moduleclassname
+        - loadchildren has two parts:- module_path followed by # and then moduleclassname                                        
+        - ![lazyload](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/lazy-load.PNG)
     
 
 
