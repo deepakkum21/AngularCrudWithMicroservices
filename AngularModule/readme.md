@@ -154,9 +154,10 @@ Command to create a module with making it import in another module:
 - Preloading is also often called **Eager Lazy Loading**
 
 ### Configuring Preloading in Angular                                                                  
-![Configuring Preloading in Angular]()
+![Configuring Preloading in Angular](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/Configuring%20Preloading%20in%20Angular.PNG)
 
-**The value for preloadingStrategy property can be one of the following**                                                                          
+**The value for preloadingStrategy property can be one of the following**    
+
 | **Value** |	**Description** |                                                                                                
 | --------- | ----------------- |                                                                                                     
 | NoPreloading |	This is the default and does not preload any modules |
