@@ -120,7 +120,48 @@ Command to create a module with making it import in another module:
     - **{ path: 'employees', loadChildren: './employee/employee.module#EmployeeModule' }**
         - loadchildren has two parts:- module_path followed by # and then moduleclassname                                        
         - ![lazyload](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/lazy-load.PNG)
-    
+
+
+
+
+## Module loading strategies in Angular 
+- Eager Loading
+- Lazy Loading
+- Preloading
+
+1. **Eager loading**
+- With Eager Loading **all the modules must be downloaded onto the client machine before the application starts**. 
+- by default, the angular modules are eagerly loaded.
+- The **root application** module (AppModule) is **always eagerly loaded**.
+- Eager loading works fine for small applications because a small application usually has, just a few modules. So eagerly downloading those few modules should not take a long time and hence it is not a performance bottle neck in a small application. But Eager loading all modules before the application starts is not right for a medium or large angular applications. In most cases, in a real world angular application we use a combination of these module loading strategies.
+- There is nothing special that we have to do, for an Angular module to be eager loaded. It just needs to be referenced in the application using imports metadata of @NgModule decorator.
+- Only the first request to the application takes a long time, but the subsequent requests from that same client will be faster. This is because, with eager loading, all the modules must be loaded before the application starts.
+
+2. **Lazy loading**
+- Lazy loaded modules are **loaded on demand when the user navigates to the routes in those respective modules**.
+- To lazy load a module, **it should not be referenced in any other module**. If it is referenced, the module loader will eagerly load it instead of lazily loading it.
+- Lazy loading can significantly reduce the initial application load time. 
+- With lazy loading configured, our **application does not load every module on startup**. Only the **root module and any other essential modules** that the user expects to see when the application first **starts are loaded**.
+- **Drawback**:-  When a route in a lazy loaded module is first requested, the user has to wait for that module to be downloaded.
+
+3. **Preloading**
+- Preloading is the same as lazy loading but happens slightly differently. 
+- First, the module to bootstrap the application and eager loaded modules are downloaded.
+- At this point, we have the application up and running and the user is interacting with the application.
+- While the application has nothing else to download, **it downloads angular modules configured to preload in the background**.
+- So, by the time the user navigates to a route in a lazy loaded module, it is already pre-loaded, so the user does not have to wait, and sees the component associated with that route right away.
+- So with preloading modules, we have the best of both the worlds i.e Eager Loading and Lazy Loading.
+- Preloading is also often called **Eager Lazy Loading**
+
+### Configuring Preloading in Angular                                                                  
+![Configuring Preloading in Angular]()
+
+**The value for preloadingStrategy property can be one of the following**                                                                          
+| **Value** |	**Description** |                                                                                                
+| --------- | ----------------- |                                                                                                     
+| NoPreloading |	This is the default and does not preload any modules |
+| PreloadAllModules |	Preloads all modules as quickly as possible in the background |
+| Custom Preload Strategy |	We can also specify our own custom preloading strategy. | 
 
 
 
