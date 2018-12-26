@@ -164,5 +164,14 @@ Command to create a module with making it import in another module:
 | PreloadAllModules |	Preloads all modules as quickly as possible in the background |
 | Custom Preload Strategy |	We can also specify our own custom preloading strategy. | 
 
-
+### custom preloading strategy in Angular
+1. To control when a lazy loaded module is downloaded onto the client machine, we use preloadingStrategy property
+2. Let us say in our Angular project, we have 2 lazy loaded modules 
+    -   EmployeeModule
+    -   AdminModule
+3. If we set, preloadingStrategy property to PreloadAllModules, then both the lazy loaded modules will be preloaded in the background.
+| **preloadingStrategy Property** | **Description** | **eg** |                                                 
+| ------------------------------- | --------------- | ------ |                                                 
+|  PreloadAllModules | then all the lazy loaded modules will be preloaded in the background | `RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})`
+| NoPreloading       | then none of the lazy loaded modules will be preloaded. | `RouterModule.forRoot(appRoutes, {preloadingStrategy: NoPreloading})` 
 
