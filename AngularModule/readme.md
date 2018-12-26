@@ -169,9 +169,12 @@ Command to create a module with making it import in another module:
 2. Let us say in our Angular project, we have 2 lazy loaded modules 
     -   EmployeeModule
     -   AdminModule
-3. If we set, preloadingStrategy property to PreloadAllModules, then both the lazy loaded modules will be preloaded in the background.
+
+3. 
+
 | **preloadingStrategy Property** | **Description** | **eg** |                                                 
 | ------------------------------- | --------------- | ------ |                                                 
 |  PreloadAllModules | then all the lazy loaded modules will be preloaded in the background | `RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})`
-| NoPreloading       | then none of the lazy loaded modules will be preloaded. | `RouterModule.forRoot(appRoutes, {preloadingStrategy: NoPreloading})` 
+| NoPreloading       | then none of the lazy loaded modules will be preloaded. | `RouterModule.forRoot(appRoutes, {preloadingStrategy: NoPreloading})` |
+| CustomPreloadingService(custom service name implementing PreloadingStrategy ) | then we can preload some of the module and some not depending on the requirement | `RouterModule.forRoot(appRoutes, {  preloadingStrategy: CustomPreloadingService })` | 
 
