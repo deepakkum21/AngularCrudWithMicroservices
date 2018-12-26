@@ -178,3 +178,7 @@ Command to create a module with making it import in another module:
 | NoPreloading       | then none of the lazy loaded modules will be preloaded. | `RouterModule.forRoot(appRoutes, {preloadingStrategy: NoPreloading})` |
 | CustomPreloadingService(custom service name implementing PreloadingStrategy ) | then we can preload some of the module and some not depending on the requirement | `RouterModule.forRoot(appRoutes, {  preloadingStrategy: CustomPreloadingService })` | 
 
+4. But, what **if we want to preload some of the modules and not the other**. In our case, let's say we want to preload EmployeeModule, but not the AdminModule. This is when, we create our own Custom Preloading Strategy. 
+5. **Steps for creating Custom Preloading Strategy in Angular**
+    - 
+
