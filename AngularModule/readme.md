@@ -180,5 +180,6 @@ Command to create a module with making it import in another module:
 
 4. But, what **if we want to preload some of the modules and not the other**. In our case, let's say we want to preload EmployeeModule, but not the AdminModule. This is when, we create our own Custom Preloading Strategy. 
 5. **Steps for creating Custom Preloading Strategy in Angular**
-    - 
+    - ![step1](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/Custom-preloading-step1.PNG)  
+    - ![step2](https://github.com/deepakkum21/Angular/blob/master/AngularModule/image/Custom-preloading-step2.PNG)
 
