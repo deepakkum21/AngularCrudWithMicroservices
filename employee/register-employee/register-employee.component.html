@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmitClick()" class="form-horizontal">
+    <div class="container">
+        <mat-card>
+            <mat-card-header>
+                <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                <mat-card-title>
+                    <h3>Employee Register</h3>
+                </mat-card-title>
+                <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+            </mat-card-header>
+            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+            <mat-card-content>
+                <hr>
+                <div class="container">
+                    <!-- <input id="firstName" formControlName="firstName" type="text" class="form-control"> -->
+                    <div class="form-row">
+                        <mat-icon color="primary">person</mat-icon>
+                        <div class="col">
+                            <div class="md-form">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>First Name</mat-label>
+                                    <input formControlName="firstName" matInput placeholder="First Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="md-form">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Middle Name</mat-label>
+                                    <input formControlName="middleName" matInput placeholder="Middle Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="md-form">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input formControlName="lastName" matInput placeholder="Last Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="form-row">
+                        <mat-icon color="primary">date_range</mat-icon>
+                        <div class="col">
+                            <div class="md-form">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>DOB</mat-label>
+                                    <input matInput [matDatepicker]="picker" placeholder="Date Of Birth">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker touchUi #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="md-form">
+                                
+                                <mat-radio-group class="gender-radio-group">
+                                    <mat-radio-button class="gender-radio-button" value="1"><b>Male</b></mat-radio-button>
+                                    <mat-radio-button class="gender-radio-button" value="2"><b>Female</b></mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
+
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</form>
+{{ employeeForm.valid }}

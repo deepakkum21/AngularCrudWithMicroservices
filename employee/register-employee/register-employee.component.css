@@ -1,0 +1,16 @@
+mat-form-field {
+    width: 100%;
+}
+
+mat-icon {
+    margin-top: 0.75em;
+}
+
+.gender-radio-button {
+    margin: 15px;
+}
+
+.gender-radio-group {
+    display: flex;
+    flex-direction: row;
+}
