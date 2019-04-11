@@ -1,0 +1,392 @@
+<!-- <form [formGroup]="schedulingForm" (ngSubmit)="onSubmitClick()">
+  <mat-card class="schedule-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title><b>Scheduling Config</b></mat-card-title>
+      <mat-card-subtitle>Schedule Job</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-form-field>
+        <mat-select [(value)]="selected" (selectionChange)="scheduleChange($event)" placeholder="Select Schedule Type"
+          formControlName="type">
+          <mat-option>None</mat-option>
+          <mat-option value="manual">Manual Run</mat-option>
+          <mat-option value="interval">Fixed Schedule</mat-option>
+          <mat-option value="frequency">Cron Schedule</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p>You selected: {{selected}}</p>
+
+      <div *ngIf="selected === 'interval'">
+
+
+        <div formGroupName="fixedIntervalGroup">
+          <mat-form-field>
+            <mat-select placeholder="Hour" formControlName="hourFI">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Minute" formControlName="minFI">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Second" formControlName="secFI">
+              <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div *ngIf="selected === 'frequency'">
+        <div formGroupName="frequencyGroup">
+          <mat-form-field>
+            <mat-select [(value)]="frequencySelected" (selectionChange)="frequencyChange($event)"
+              placeholder="Select Frequency Type" formControlName="frequencyType">
+              <mat-option>None</mat-option>
+              <mat-option value="daily">Daily</mat-option>
+              <mat-option value="weekly">Weekly</mat-option>
+              <mat-option value="monthly">Monthly</mat-option>
+              <mat-option value="custom">Custom</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>You selected: {{frequencySelected}}</p>
+          <div *ngIf="frequencySelected === 'daily'">
+            <div formGroupName="dailyFreqgroup">
+
+              <mat-form-field>
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div *ngIf="frequencySelected === 'monthly'">
+            <div formGroupName="monthlyFreqGroup">
+
+              <mat-form-field>
+                <mat-select placeholder="Date" formControlName="dateFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let date of dates" [value]="date">{{date}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div *ngIf="frequencySelected === 'weekly'">
+            <div formGroupName="weeklyFreqGroup">
+              <mat-form-field>
+                <mat-select [(value)]="weekDay" placeholder="Select Frequency Type" formControlName="weekdayFr">
+                  <mat-option value="MON">Monday</mat-option>
+                  <mat-option value="TUE">Tuesday</mat-option>
+                  <mat-option value="WED">Wednesday</mat-option>
+                  <mat-option value="THU">Thrusday</mat-option>
+                  <mat-option value="FRI">Friday</mat-option>
+                  <mat-option value="SAT">Saturday</mat-option>
+                  <mat-option value="SUN">Sunday</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div *ngIf="frequencySelected === 'custom'">
+            <div formGroupName="customFreqGroup">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="Choose a date"
+                  formControlName="dateFr" (selectionChange)="ddblChange($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!schedulingForm.valid">Submit</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="isDisabled">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form> -->
+
+
+<div class="col-md-10 center">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true" #matExpansionPanel1>
+      <mat-expansion-panel-header class="margin-bottom-25" (click)="onPanelClick(matExpansionPanel1)">
+        <mat-panel-title> Schedule Config</mat-panel-title>
+      </mat-expansion-panel-header>
+      <form [formGroup]="schedulingForm" (ngSubmit)="onSubmitClick()">
+        <label class="col-md-4">Select Schedule Type</label>
+        <mat-form-field appearance="outline" class="col-md-6">
+          <mat-select placeholder="Select" formControlName="type" id="type" [(value)]="selected"
+            (selectionChange)="scheduleChange($event)">
+            <!-- <mat-option *ngFor="let t of leaveTypeList" [value]="t.viewValue"> {{t.viewValue }}</mat-option> -->
+            <mat-option value="manual">Manual Run</mat-option>
+            <mat-option value="interval">Fixed Schedule</mat-option>
+            <mat-option value="frequency">Cron Schedule</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div *ngIf="selected === 'interval'">
+          <div formGroupName="fixedIntervalGroup">
+            <label class="col-md-4">Select Hour</label>
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-select placeholder="Select" formControlName="hourFI">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <label class="col-md-4">Select Minutes</label>
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-select placeholder="Select" formControlName="minFI">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <label class="col-md-4">Select Seconds</label>
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-select placeholder="Select" formControlName="secFI">
+                <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div *ngIf="selected === 'frequency'">
+          <div formGroupName="frequencyGroup">
+            <label class="col-md-4">Select Cron Type</label>
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-select [(value)]="frequencySelected" (selectionChange)="frequencyChange($event)" placeholder="Select"
+                formControlName="frequencyType">
+                <mat-option value="daily">Daily</mat-option>
+                <mat-option value="weekly">Weekly</mat-option>
+                <mat-option value="monthly">Monthly</mat-option>
+                <mat-option value="custom">Custom</mat-option>
+              </mat-select>
+            </mat-form-field>
+         
+
+          <div *ngIf="frequencySelected === 'daily'">
+            <div formGroupName="dailyFreqgroup">
+              <label class="col-md-4">Select Hour</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>Select</mat-option>
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Minute</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+                  <mat-option>select</mat-option>
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Seconds</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div *ngIf="frequencySelected === 'weekly'">
+            <div formGroupName="weeklyFreqGroup">
+              <label class="col-md-4">Select Day</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select [(value)]="weekDay" placeholder="Select Frequency Type" formControlName="weekdayFr">
+                  <mat-option value="MON">Monday</mat-option>
+                  <mat-option value="TUE">Tuesday</mat-option>
+                  <mat-option value="WED">Wednesday</mat-option>
+                  <mat-option value="THU">Thrusday</mat-option>
+                  <mat-option value="FRI">Friday</mat-option>
+                  <mat-option value="SAT">Saturday</mat-option>
+                  <mat-option value="SUN">Sunday</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <label class="col-md-4">Select Hour</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Minute</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Second</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div *ngIf="frequencySelected === 'monthly'">
+            <div formGroupName="monthlyFreqGroup">
+              <label class="col-md-4">Select Date</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Date" formControlName="dateFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let date of dates" [value]="date">{{date}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Hour</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Min</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <label class="col-md-4">Select Seconds</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div *ngIf="frequencySelected === 'custom'">
+            <div formGroupName="customFreqGroup">
+                <label class="col-md-4">Select Date</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="Choose a date"
+                  formControlName="dateFr" (selectionChange)="ddblChange($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+              </mat-form-field>
+              <label class="col-md-4">Select Hour</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Hour" formControlName="hourFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Minute</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Minute" formControlName="minFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="col-md-4">Select Seconds</label>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-select placeholder="Second" formControlName="secFr" (selectionChange)="ddblChange($event)">
+                  <mat-option *ngFor="let sec of secs" [value]="sec">{{sec}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- <label class="col-md-4">Start Date</label>
+        <mat-form-field appearance="outline" class="col-md-6">
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <label class="col-md-4">End Date</label>
+        <mat-form-field appearance="outline" class="col-md-6">
+          <input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <label class="col-md-4">Reason</label>
+        <mat-form-field appearance="outline" class="col-md-6">
+          <textarea matInput placeholder="Leave a comment" formControlName="reason"></textarea>
+        </mat-form-field> -->
+      
+      <div class="panel-footer">
+        <button mat-raised-button class="button-color" id="schedule" type="submit" [disabled]="!schedulingForm.valid">
+          Schedule
+        </button>
+      </div>
+    </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

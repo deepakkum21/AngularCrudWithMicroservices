@@ -1,0 +1,8 @@
+entity SourceSchedularTable{
+	empId Integer,
+    fullName String,
+    indicator String,
+    email String,
+    phone Long,
+    contactPreference String
+}

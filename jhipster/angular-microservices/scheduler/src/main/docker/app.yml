@@ -1,0 +1,21 @@
+version: '2'
+services:
+    jobscheduler-app:
+        image: jobscheduler
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATA_MONGODB_URI=mongodb://jobscheduler-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=jobscheduler
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_JEST_URI=http://jobscheduler-elasticsearch:9200
+        ports:
+            - 7777:7777
+    jobscheduler-mongodb:
+        extends:
+            file: mongodb.yml
+            service: jobscheduler-mongodb
+    jobscheduler-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: jobscheduler-elasticsearch

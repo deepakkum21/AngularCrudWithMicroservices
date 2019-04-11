@@ -1,0 +1,78 @@
+<!-- <h1>File Upload</h1>
+<div class="row">
+  <div class="col-md-6">
+    <div *ngIf="fileUpload.status==='error'">
+      <div [innerHTML]="fileUpload.message"></div>
+    </div>
+    <div *ngIf="fileUpload.status==='progress'">
+      <div class="progress" style="height: 20px;margin-bottom:20px;">
+        <div class="progress-bar" role="progressbar" [style.width.%]="fileUpload.message" aria-valuenow="25"
+          aria-valuemin="0" aria-valuemax="100">{{fileUpload.message}}%</div>
+      </div>
+    </div>
+    <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="text" formControlName="name" class="form-control" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input type="file" name="profile" (change)="onSelectedFile($event)" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Upload</button>
+      </div>
+    </form>
+    <p>{{ error }}</p>
+  </div>
+</div> -->
+
+<div class="col-md-10 center">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true" #matExpansionPanel1>
+      <mat-expansion-panel-header class="margin-bottom-25" (click)="onPanelClick(matExpansionPanel1)">
+        <mat-panel-title> File Upload</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="fileUpload.status===undefined">
+        <div [innerHTML]="fileUpload.message"></div>
+      </div>
+      <div *ngIf="fileUpload.status!==undefined && fileUpload.status==='progress'">
+        <div class="progress" style="height: 20px;margin-bottom:20px;">
+          <div class="progress-bar" role="progressbar" [style.width.%]="fileUpload.message" aria-valuenow="25"
+            aria-valuemin="0" aria-valuemax="100">{{fileUpload.message}}%</div>
+        </div>
+      </div>
+      <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="file" name="profile" (change)="onSelectedFile($event)" />
+        </div>
+        <!-- <div class="form-group">
+          <input type="text" formControlName="name" class="form-control" placeholder="Name">
+        </div>
+        <div *ngIf="isCsvFile == true">
+          <div class="form-group">
+            <input type="text" formControlName="delimeter" class="form-control"
+              placeholder="Give CSV Delimeter  by default ,">
+          </div>
+        </div> -->
+        <label class="col-md-4">File To Be Uploaded</label>
+        <mat-form-field appearance="outline" class="col-md-6">
+          <input matInput  readonly formControlName="name">
+        </mat-form-field>
+        <div *ngIf="isCsvFile == true">
+        <label class="col-md-4">Give CSV Delimeter</label>
+        <mat-form-field appearance="outline" class="col-md-6">
+          <input matInput   formControlName="delimeter" placeholder="default is comma ','" >
+        </mat-form-field>
+        </div>
+        <!-- <div class="form-group">
+              <button type="submit" class="btn btn-success" [disabled]="!fileUploadForm.valid">Upload</button>
+            </div> -->
+        <div class="panel-footer">
+          <button mat-raised-button class="button-color" id="upload" type="submit" [disabled]="!fileUploadForm.valid">
+            Upload
+          </button>
+        </div>
+
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

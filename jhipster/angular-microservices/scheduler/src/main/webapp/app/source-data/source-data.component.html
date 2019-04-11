@@ -1,0 +1,53 @@
+<div class="mat-elevation-z24 mat-elevation-transition">
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Checkbox Column -->
+    <!-- <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </mat-header-cell>>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container> -->
+
+    <!-- Index Column -->
+    <ng-container matColumnDef="index">
+      <mat-header-cell *matHeaderCellDef> S.No. </mat-header-cell>
+      <mat-cell *matCellDef="let index = index"> {{index+1}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="empId">
+      <mat-header-cell *matHeaderCellDef>EmpId</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.empId }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="fullName">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.fullName }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.email }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.phone }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="contactPreference">
+      <mat-header-cell *matHeaderCellDef>ContactPreference</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.contactPreference }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="indicator">
+      <mat-header-cell *matHeaderCellDef>Indicator</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.indicator }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: rgb(255, 182, 193);"></mat-header-row>
+    <mat-row *matRowDef="let rowData; columns: displayedColumns;" class="pointerCursor"></mat-row>
+  </mat-table>
+  <div>
+    <mat-paginator [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

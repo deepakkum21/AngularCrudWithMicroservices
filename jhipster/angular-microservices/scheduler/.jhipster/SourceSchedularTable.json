@@ -1,0 +1,39 @@
+{
+    "name": "SourceSchedularTable",
+    "fields": [
+        {
+            "fieldName": "empId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fullName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "indicator",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "contactPreference",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190401065937",
+    "entityTableName": "source_schedular_table",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
