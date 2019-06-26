@@ -1,0 +1,27 @@
+1. Query String Parameters in Angular
+2. Creating and reading Query String Parameters is somewhat similar to creating and reading required and optional route parameters.
+3. Query parameters are usually used when you want the parameters on the route to be optional and when you want to retain those parameters across multiple routes.
+    For example, on the LIST route, you search for a specific employee. You then click on one of the employees in the search results to view that specific employee details on the DETAILS route. 
+    At this point, when we navigate back to the LIST route we want to retain the search term used, so we can display the filtered list instead of the full employee list.
+4. Just like optional route parameters, query parameters are not part of the route configuration and therefore they are not used in route pattern matching. 
+5. Passing query string parameters in code : We use the second argument of the Router service navigate() method to pass query string parameters. 
+        a. Create an object with queryParams as the key.
+        b. The value is an object with key/value pairs. 
+        c. The key is the name of the query parameter and the value is the value for the query parameter.
+        // to use in component
+        this._router.navigate(['employees', employeeId], {
+        queryParams: { 'searchTerm': this.searchTerm, 'testParam': 'testValue' }
+        });
+
+        Passing query string parameters in the HTML 
+        <a [routerLink]="['/employees']"
+        [queryParams]="{ 'searchTerm': 'john', 'testParam': 'testValue'}">
+            List
+        </a>
+
+6. Preserve or Merge Query String Parameters : By default, the query string parameters are not preserved or merged when navigating to a different route. To preserve or merge Query Params set queryParamsHandling to either preserve or merge respectively. 
+        Preserve query string parameters in code 
+        this._router.navigate(['/employees', this._id], {
+        queryParamsHandling: 'preserve'
+        });
+        

@@ -28,7 +28,8 @@
 <div class="col-md-10 center">
   <mat-accordion>
     <mat-expansion-panel [expanded]="true" #matExpansionPanel1>
-      <mat-expansion-panel-header class="margin-bottom-25" (click)="onPanelClick(matExpansionPanel1)">
+      <mat-expansion-panel-header class="margin-bottom-25" >
+          <!-- <mat-expansion-panel-header class="margin-bottom-25" (click)="onPanelClick(matExpansionPanel1)"> -->
         <mat-panel-title> File Upload</mat-panel-title>
       </mat-expansion-panel-header>
       <div *ngIf="fileUpload.status===undefined">

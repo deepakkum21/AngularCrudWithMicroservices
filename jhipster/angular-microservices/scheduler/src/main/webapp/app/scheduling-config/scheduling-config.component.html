@@ -184,7 +184,8 @@
 <div class="col-md-10 center">
   <mat-accordion>
     <mat-expansion-panel [expanded]="true" #matExpansionPanel1>
-      <mat-expansion-panel-header class="margin-bottom-25" (click)="onPanelClick(matExpansionPanel1)">
+      <mat-expansion-panel-header class="margin-bottom-25" >
+          <!-- <mat-expansion-panel-header class="margin-bottom-25" (click)="onPanelClick(matExpansionPanel1)"> -->
         <mat-panel-title> Schedule Config</mat-panel-title>
       </mat-expansion-panel-header>
       <form [formGroup]="schedulingForm" (ngSubmit)="onSubmitClick()">

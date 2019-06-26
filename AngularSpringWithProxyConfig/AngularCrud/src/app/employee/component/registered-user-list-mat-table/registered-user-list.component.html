@@ -1,0 +1,75 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<div class="spinner-container" *ngIf="!dataSource">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="mat-elevation-z24 mat-elevation-transition">
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </mat-header-cell>>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Index Column -->
+    <ng-container matColumnDef="index">
+      <mat-header-cell *matHeaderCellDef> S.No. </mat-header-cell>
+      <mat-cell *matCellDef="let index = index"> {{index+1}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="fullName">
+      <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.firstName +' ' + userInfo.middleName +' '+ userInfo.lastName  | uppercase}}</mat-cell>
+    </ng-container>
+    <!-- <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.firstName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="middleName">
+      <mat-header-cell *matHeaderCellDef>Middle Name</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.middleName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.lastName}}</mat-cell>
+    </ng-container>     -->
+    <ng-container matColumnDef="userName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>User Name</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.userName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.email}}</mat-cell>
+    </ng-container>
+    <!-- <ng-container matColumnDef="state">
+      <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+      <mat-cell *matCellDef="let userInfo">{{userInfo.state}}</mat-cell>
+    </ng-container> -->
+    <mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: rgb(255, 182, 193);"></mat-header-row>
+    <mat-row *matRowDef="let rowData; columns: displayedColumns;" (click)="onRowClicked(rowData)" class="pointerCursor"></mat-row>
+  </mat-table>
+  <div>
+    <mat-paginator [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+<div class="button-row ">
+  <!-- <button mat-stroked-button>Basic</button> -->
+  <button mat-fab color="accent" (click)="editData()" class="mat-elevation-z24">
+    <mat-icon>mode_edit</mat-icon>
+  </button>
+  <!-- <button mat-stroked-button color="accent">Accent</button>
+    <button mat-stroked-button color="warn">Warn</button>
+    <button mat-stroked-button disabled>Disabled</button>
+    <a mat-stroked-button routerLink=".">Link</a> -->
+  <button mat-fab color="warn" (click)="onDelete()" class="mat-elevation-z24">
+    <mat-icon >delete</mat-icon>
+  </button>
+</div>

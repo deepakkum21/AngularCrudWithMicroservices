@@ -1,0 +1,9 @@
+.pointerCursor {
+    cursor: pointer;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+  margin-top: 8px;
+}

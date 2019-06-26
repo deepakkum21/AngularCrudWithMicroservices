@@ -1,35 +1,49 @@
 {
-    "generator-jhipster": {
-        "promptValues": {
-            "packageName": "com.deepak"
-        },
-        "jhipsterVersion": "5.8.2",
-        "applicationType": "gateway",
-        "baseName": "jhipster",
-        "packageName": "com.deepak",
-        "packageFolder": "com/deepak",
-        "serverPort": "8080",
-        "authenticationType": "jwt",
-        "cacheProvider": "no",
-        "enableHibernateCache": false,
-        "websocket": false,
-        "databaseType": "mongodb",
-        "devDatabaseType": "mongodb",
-        "prodDatabaseType": "mongodb",
-        "searchEngine": false,
-        "messageBroker": false,
-        "serviceDiscoveryType": false,
-        "buildTool": "maven",
-        "enableSwaggerCodegen": true,
-        "jwtSecretKey": "MWNkYzc0ODA1NTM3YWJhZmY2MWE3ZGZiNWEzODI5OWU2MmIwOTIwODI2NTY3ZmQyMDg2NjE4Y2YxNzY1NDAzMTgyOWRhNzZkYzRhNjg2MGUzZjAyMTkwYTM3NDdkYjBjNDM0ODY0M2U2MTVkZDcwMmMwNWU4NTgwNmVlMzkwNTI=",
-        "clientFramework": "angularX",
-        "useSass": false,
-        "clientPackageManager": "npm",
-        "testFrameworks": [],
-        "jhiPrefix": "jhi",
-        "entitySuffix": "",
-        "dtoSuffix": "DTO",
-        "otherModules": [],
-        "enableTranslation": false
-    }
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.deepak"
+    },
+    "jhipsterVersion": "5.8.2",
+    "applicationType": "gateway",
+    "baseName": "jhipster",
+    "packageName": "com.deepak",
+    "packageFolder": "com/deepak",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "MWNkYzc0ODA1NTM3YWJhZmY2MWE3ZGZiNWEzODI5OWU2MmIwOTIwODI2NTY3ZmQyMDg2NjE4Y2YxNzY1NDAzMTgyOWRhNzZkYzRhNjg2MGUzZjAyMTkwYTM3NDdkYjBjNDM0ODY0M2U2MTVkZDcwMmMwNWU4NTgwNmVlMzkwNTI=",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "appsFolders": [
+      "jhipster-Angular6"
+    ],
+    "directoryPath": "../",
+    "clusteredDbApps": [
+      "jhipster-Angular6"
+    ],
+    "dockerRepositoryName": "deepakkum21",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "default",
+    "kubernetesServiceType": "NodePort",
+    "monitoring": "no",
+    "istio": "no",
+    "istioRoute": false
+  }
 }

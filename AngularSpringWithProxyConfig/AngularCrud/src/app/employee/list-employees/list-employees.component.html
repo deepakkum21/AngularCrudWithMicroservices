@@ -1,0 +1,57 @@
+<!-- use card instead of panel for bootstrap@4 and panel in bootstrap@3 -->
+
+<!-- Using @Output for getting Child property -->
+<!-- <h3 *ngIf="notifyDataFromChild">
+  Using @Output for getting Child property: {{notifyDataFromChild.name + ' ' + notifyDataFromChild.gender}}
+</h3> -->
+
+<!-- Using #template-ref for getting Child property -->
+<h3 #h3Variable>
+</h3>
+
+<!-- this was used to loop through the employees and get a employee and pass to the child component -->
+<!-- <div *ngFor=" let employee of employeesList">
+  <div (click)="h3Variable.innerHTML=childComponent.getEmpNameGenderUsingTemplateRef()">
+  <app-display-employee [employee]=employee (notify)="handleNotify($event)" #childComponent></app-display-employee>
+</div>
+</div> -->
+<!-- used for implementing button click to change or view next employee -->
+<!-- <button (click)="nextEmployee()" class="btn btn-primary">
+  View Next Employee
+</button>
+<br />
+<app-display-employee [employee]=employeeToShow></app-display-employee> -->
+
+
+<!-- to show search text box i.e. filterbox -->
+<div class="form-group">
+  <input placeholder="Serach By Name" type="text" class="form-control" [(ngModel)]="searchText">
+</div>
+
+<!-- <div class="form-group">
+  <button (click)="changeEmployeeChange()" class="btn btn-primary">
+    Change Employee Name for 1st Employee
+  </button>
+</div> -->
+
+<!-- for routing to employeeId employeedetails -->
+<!-- for filter using pure pipe -->
+<!-- <div *ngFor=" let employee of employeesList | employeeFilter:searchText">
+  <div (click)="onClikForEmployeeDetail(employee.id)" class="pointerCursor">
+    <app-display-employee [employee]=employee (notify)="handleNotify($event)" #childComponent></app-display-employee>
+  </div>
+</div> -->
+
+
+<!-- for filter logic in component -->
+<div *ngFor=" let employee of filteredEmployeeList">
+  <!-- it is for showing employee details when clicking anywhere in that employee block -->
+  <!-- <div (click)="onClikForEmployeeDetail(employee.id)"> -->
+    <app-display-employee [employee]=employee (notify)="handleNotify($event)" #childComponent 
+                          [searchText]="searchText" 
+                          (notifyDelete)="onDeleteEmployeeNotification($event)"></app-display-employee>
+  
+</div>
+<div *ngIf="error">
+  {{error}}
+</div>
