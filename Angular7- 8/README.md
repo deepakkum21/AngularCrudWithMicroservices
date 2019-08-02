@@ -399,6 +399,12 @@
 
 
         value = 5;
+
+
+### Notes:
+- Whenever returning a array from the method of get return by slice(), since when returning the array,the reference also gets return which might result in updation of the original array, and slice gives a new array.
+
+
         
 
 
