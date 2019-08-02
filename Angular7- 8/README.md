@@ -182,8 +182,8 @@
 | ngOnDestroy | called once the component is about to destroy |
 
 
-## @ontentChild('refName') 
-- 
+## @ContentChild('refName') 
+- [Content Child](https://github.com/deepakkum21/Angular/blob/master/Angular7-%208/src/assets/ViewChildren%20%26%20ContentChildren%20%E2%80%A2%20Angular.pdf)
 
 
 ## Custom Atrribute Directive:
