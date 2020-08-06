@@ -1,0 +1,22 @@
+<!-- src/app/info-box/info-box.component.html -->
+<div *ngIf="formSubmitted; else formEntry" >
+  <h4>{{ thankyouMessage }}</h4>
+  <p>{{ formData.name }}, our newsletter is on its way to your inbox!</p>
+</div>
+<ng-template #formEntry>
+  <h4 class="color_bt">{{ signupTitle }}</h4>
+  <p>Get cool news and tips on the latest blockchain Angular-powered AI 5G stuff</p>
+  <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+    <div>
+      <label>Name:</label>
+      <input class="color_bt" type="text" name="name" [(ngModel)]="formData.name">
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="text" name="email" [(ngModel)]="formData.email">
+    </div>
+    <div>
+      <button type="submit" [disabled]="!emailForm.form.valid">Sign up!</button>
+    </div>
+  </form>
+</ng-template>

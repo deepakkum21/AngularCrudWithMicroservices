@@ -1,0 +1,2 @@
+#!/bin/sh
+ng build angular-web-component --prod --output-hashing=none && cat dist/angular-web-component/runtime.js dist/angular-web-component/polyfills.js dist/angular-web-component/scripts.js dist/angular-web-component/main.js > preview/angularapp.js
