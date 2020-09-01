@@ -1,0 +1,144 @@
+<div *ngIf="isChatFormVisible" class="chat__card__layout ">
+  <div class="chat__container">
+
+    <div class="chat__container__header">
+      <div class="chat__container__header__logo-title">
+        <img src="assets/images/Inspirisys-logo.png" alt="inspirisys logo" class="chat__header__image">
+        <img src="assets/images/isl.jpg" alt="isl logo" class="chat__header__image2">
+        <!-- <h3>Assistance</h3> -->
+      </div>
+      <div class="chat__header__button__div">
+        <button (click)="isChatFormVisible = false" mat-button #tooltip="matTooltip" matTooltip="close the chat"
+          matTooltipPosition="left" matTooltipHideDelay="300">
+          <mat-icon class="chat__header__close__icon">close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="chat__container__body" #scrollMe [scrollTop]="scrolltop">
+      <div>
+        <ng-container *ngFor="let msg of messages; let j = index">
+          <div *ngIf="!msg.isBot" class="chat__container__body__user">
+            <mat-card class="chat__card__content__user">
+              <mat-card-content>
+                {{msg.usercontent}}
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <ng-container *ngIf="msg.isBot">
+            <ng-container *ngFor="let content of msg.botcontent; let p=index">
+              <div *ngIf="content.text" class="chat__container__body__bot">
+                <mat-card class="chat__card__content__bot">
+                  <mat-card-content>
+                    {{content.text}}
+                    <!-- <p><a [attr.id]="'sol_link_' + j" *ngIf="msg.botcontent[p+1]?.link"
+                        (click)="linkClicked()" [href]="msg.botcontent[p+1].link"
+                        [ngClass]="j<messages.length-1 ? 'href__disable' : null">Click
+                        here to
+                        download the file</a></p> -->
+                  </mat-card-content>
+                </mat-card>
+              </div>
+
+              <ng-container *ngIf="content.buttons">
+                <mat-card class="main__options__button__card">
+                  <ng-container *ngFor="let button of content.buttons; let a=index">
+                    <button [attr.id]="'main_menu_' + j + '_' +a" (click)="buttonAction(button)"
+                      [disabled]="j<messages.length-1" class="main__options__button"
+                      mat-raised-button>{{button.title}}</button>
+                  </ng-container>
+                </mat-card>
+              </ng-container>
+              <ng-container *ngIf="content.dropdowns">
+                <mat-card class="chat__card__content__option">
+                  <mat-card-header class="card_option_header">
+                    <mat-card-title class="card__options__header__title">Select from the below issue</mat-card-title>
+                  </mat-card-header>
+                  <ng-container *ngFor="let dropdown of content.dropdowns; let b=index">
+
+                    <mat-card [attr.id]="'sub_menu_' + j + '_' +b" class="card__options">
+                      <mat-card-content class="card__options__content">
+                        <mat-card-title class="card__options__content__title"> <a (click)="linkClicked(dropdown, b)"
+                            [href]="dropdown.link"
+                            [ngClass]="j<messages.length-1 ? 'href__disable' : null">{{dropdown.title}}</a>
+                        </mat-card-title>
+                      </mat-card-content>
+                    </mat-card>
+
+                  </ng-container>
+                </mat-card>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="msg.linkClicked">
+              <mat-card class="main__options__button__card">
+                <button [attr.id]="'dislike_button_' + j" mat-mini-fab class="linkclicked__like__dislike__button"
+                  [disabled]="j<messages.length-1" (click)="yesNoOption(false)" mat-button #tooltip="matTooltip"
+                  matTooltip="No" matTooltipPosition="above" matTooltipHideDelay="100">
+                  <mat-icon><span class="material-icons">
+                      thumb_down
+                    </span></mat-icon>
+                </button>
+                <button [attr.id]="'like_button_' + j" mat-mini-fab class="linkclicked__like__dislike__button"
+                  [disabled]="j<messages.length-1" (click)="yesNoOption(true)" mat-button #tooltip="matTooltip"
+                  matTooltip="Yes" matTooltipPosition="above" matTooltipHideDelay="100">
+                  <mat-icon><span class="material-icons">
+                      thumb_up
+                    </span></mat-icon>
+                </button>
+              </mat-card>
+            </ng-container>
+
+          </ng-container>
+
+
+        </ng-container>
+      </div>
+      <div *ngIf="isWaitingForResponse">
+        <app-three-dots-bouncing></app-three-dots-bouncing>
+      </div>
+
+      <div *ngIf="errorMsg" class="chat__container__body__bot">
+        <mat-card class="chat__card__content__bot">
+          <mat-card-content>
+            {{errorMsg}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+    </div>
+    <form [formGroup]="messageForm">
+      <div class="chat__container__footer">
+
+        <mat-form-field class="chat__input__field" floatLabel="never">
+          <!-- <mat-label>Enter here ...</mat-label> -->
+          <input matInput type="text" class="form-control chat__input" placeholder="Enter input here" name="content"
+            formControlName="messageContent">
+          <button mat-button *ngIf="inpuFieldValue" matSuffix mat-icon-button aria-label="Clear"
+            (click)="inpuFieldValue=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div class="chat__input__button__container">
+          <button type="submit" class="chat__input__button" (click)="sendMessage()" mat-mini-fab color="accent">
+            <mat-icon>{{messageForm.controls['messageContent'].value==='' ? 'mic': 'send'}}</mat-icon>
+            <div *ngIf="isListening" class="pulse-ring"></div>
+          </button>
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <div class="chat-button">
+  <button id="chat-button" mat-mini-fab (click)="showChatForm()" mat-button #tooltip="matTooltip"
+    matTooltip="Self-help chatbot" matTooltipPosition="above" matTooltipHideDelay="300">
+    <mat-icon><span class="material-icons">
+        chat
+      </span></mat-icon>
+  </button>
+</div> -->
+<div class="chat__image__container" (click)="showChatForm()">
+  <img [ngClass]='!isChatFormVisible ? "chat__image" : "chat__image__short"' src="assets/images/askisl.png"
+    alt="ask isl pic">
+</div>
